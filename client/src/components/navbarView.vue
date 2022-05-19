@@ -2,7 +2,6 @@
   <b-navbar :centered="true" type="is-white">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <!-- 좀 키우기.. -->
         <img
           src="../assets/COALA.svg"
           alt="COALA"
@@ -11,24 +10,25 @@
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-item href="#"> 추천학습 </b-navbar-item>
-      <b-navbar-item href="#"> 선택학습 </b-navbar-item>
-      <b-navbar-item href="#"> 게시판 </b-navbar-item>
-      <b-navbar-item href="#"> 랭킹 </b-navbar-item>
-      <b-navbar-item href="#"> 마이페이지 </b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#"> About </b-navbar-item>
-        <b-navbar-item href="#"> Contact </b-navbar-item>
-      </b-navbar-dropdown>
+      <b-navbar-item class="margin-horizontal" href="#">추천학습</b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="#">
+        선택학습
+      </b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="#"> 게시판 </b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="#"> 대회 </b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="#"> 랭킹 </b-navbar-item>
     </template>
 
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
+          <!-- 우측 요소와 간격 띄우기 위해 margin-right 추가-->
+          <a href="" style="margin-right: 30px">
+            <font-awesome-icon icon="fa-bell" size="2x" shake />
           </a>
-          <a class="button is-light"> Log in </a>
+          <a href="">
+            <font-awesome-icon icon="fa-circle-user" size="2x" />
+          </a>
         </div>
       </b-navbar-item>
     </template>
@@ -43,3 +43,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.margin-horizontal {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+</style>
