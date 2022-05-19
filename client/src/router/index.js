@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import MainView from '../views/MainView.vue';
 import LoginView from '../views/LoginView.vue';
-import tileView from '../views/tileView.vue';
+import UserLevelCheckView from '../views/UserLevelCheckView.vue';
 
 Vue.use(VueRouter);
 
@@ -26,9 +26,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     },
     {
-        path: '/tile',
-        name: 'tile',
-        component: tileView
+        path: '/levelcheck',
+        name: 'levelcheck',
+        component: UserLevelCheckView
     }
 ];
 
