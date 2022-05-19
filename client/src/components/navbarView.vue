@@ -45,7 +45,7 @@ export default {
 </script>
 <style scoped>
 .margin-horizontal {
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 </style>
