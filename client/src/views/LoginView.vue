@@ -413,7 +413,7 @@ export default {
   components: {},
   methods: {
     loginFn() {
-      this.$router.push({ path: "/main" });
+      this.$router.push({ path: "/levelcheck" });
     }
   }
 };
