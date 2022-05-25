@@ -26,7 +26,7 @@
           <a href="" style="margin-right: 30px">
             <font-awesome-icon icon="fa-bell" size="2x" shake />
           </a>
-          <a href="">
+          <a href="/mypage">
             <font-awesome-icon icon="fa-circle-user" size="2x" />
           </a>
         </div>
