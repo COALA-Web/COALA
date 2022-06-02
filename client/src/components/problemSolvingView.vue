@@ -85,7 +85,7 @@
         <hr>
         <ProblemOne/>
       </div>
-      <div class="gutter-vertical" @mousedown="verticalMsdwn()"   >
+      <div class="gutter-vertical" @mousedown="verticalMsdwn()">
         <!-- <p> {{click}}</p>
         <p> {{counter}}</p> -->
 
@@ -238,6 +238,7 @@ export default {
       lineNumbers: true,
       mode: 'python',
       theme: 'eclipse',
+      direction: 'ltr',
     });
   },
   methods: {
@@ -315,6 +316,7 @@ html, body {
 .main {
   height:100%;
   width:100%;
+  
 }
 .theme {
   background-color: #F0F0F0;
@@ -335,7 +337,7 @@ html, body {
   height: 100%;
   display: inline-block;
   padding: 1em;
-  overflow:scroll
+  overflow: scroll
 }
 .guide-section-title{
   font-family: arial;
@@ -370,6 +372,7 @@ html, body {
   overflow: scroll;
   top: 0;
   left: 0;
+  text-align: left;
 }
 .gutter-horizontal{
   width: 100%;
