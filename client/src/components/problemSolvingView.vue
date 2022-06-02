@@ -101,43 +101,50 @@
 
 
             <!-- default State -->
-            <!-- <p><b>실행 결과는 여기에 표시됩니다.</b></p> -->
+            <div v-if="resultSection==='default'">
+              <p><b>실행 결과는 여기에 표시됩니다.</b></p>
+            </div>
+            
 
-
-            <!-- test Case State -->
-            <p style="font-size:xx-large; color:red">Wrong Answer</p>
-            <!-- <p style="font-size:xx-large; color:green">Right Answer</p> -->
-            <div class="test Input">
-              <span style="font-size:x-large">Input : </span>
-              <span style="width:100%; font-size:x-large;background-color: #F0F0FF">  {{testCaseInput}}  </span>
+            <div v-else-if="resultSection==='test'">
+              <!-- test Case State -->
+              <p style="font-size:xx-large; color:red">Wrong Answer</p>
+              <!-- <p style="font-size:xx-large; color:green">Right Answer</p> -->
+              <div class="test Input">
+                <span style="font-size:x-large">Input : </span>
+                <span style="width:100%; font-size:x-large;background-color: #F0F0FF">  {{testCaseInput}}  </span>
+              </div>
+              <div class="test Output">
+                <span style=" font-size:x-large">Output : </span>
+                <span style=" font-size:x-large;background-color: #F0F0FF">  {{testCaseOutput}}  </span>
+              </div>
+              <div class="test Expected">
+                <span style="font-size:x-large">Expected : </span>
+                <span style="font-size:x-large;background-color: #F0F0FF">  {{testCaseExpected}}  </span>
+              </div>
             </div>
-            <div class="test Output">
-              <span style=" font-size:x-large">Output : </span>
-              <span style=" font-size:x-large;background-color: #F0F0FF">  {{testCaseOutput}}  </span>
-            </div>
-            <div class="test Expected">
-              <span style="font-size:x-large">Expected : </span>
-              <span style="font-size:x-large;background-color: #F0F0FF">  {{testCaseExpected}}  </span>
-            </div>
+            
 
             <!-- Submit Case State - success-->
+            <div v-else-if="resultSection==='submit'">
+              <p style="font-size:xx-large; color:green">Success</p>
+              <div style="margin-top:10px;font-style: oblique;font-size:medium">
+                <span style="font-size:x-large">Runtime : </span>
+                <span style="font-size:x-large">{{runtime}}</span>
+                <span>으로 {{topic}} 문제에 대해 </span>
+                <span style="font-size:x-large">{{runtimeP}}</span>
+                <span> 의 {{language}} 제출 결과 통계 보다 빠릅니다.</span>
+              </div>
+              <div style="font-style: oblique;font-size:medium">
+                <span style="font-size:x-large">Memory Usage : </span>
+                <span style="font-size:x-large">{{memoryUse}}</span>
+                <span>으로 {{topic}} 문제에 대해 </span>
+                <span style="font-size:x-large">{{memoryUseP}}</span>
+                <span> 의 {{language}} 제출 결과 통계 보다 빠릅니다.</span>
+              </div>
+            </div>
             
-            <!-- <p style="font-size:xx-large; color:green">Success</p>
-            <div style="margin-top:10px;font-style: oblique;font-size:medium">
-              <span style="font-size:x-large">Runtime : </span>
-              <span style="font-size:x-large">{{runtime}}</span>
-              <span>으로 {{topic}} 문제에 대해 </span>
-              <span style="font-size:x-large">{{runtimeP}}</span>
-              <span> 의 {{language}} 제출 결과 통계 보다 빠릅니다.</span>
-            </div>
-            <div style="font-style: oblique;font-size:medium">
-              <span style="font-size:x-large">Memory Usage : </span>
-              <span style="font-size:x-large">{{memoryUse}}</span>
-              <span>으로 {{topic}} 문제에 대해 </span>
-              <span style="font-size:x-large">{{memoryUseP}}</span>
-              <span> 의 {{language}} 제출 결과 통계 보다 빠릅니다.</span>
-            </div>
-             -->
+            
             <!-- Submit Case State - failed-->
             <!-- <p style="font-size:xx-large; color:red">Failed</p>
             <div class="Input">
@@ -169,9 +176,9 @@
         <div class="column is-one-quarter">
           <div class="buttons">
             <b-button type="is-primary" inverted>다른 사람 풀이보기</b-button>
-            <b-button type="is-primary" inverted>초기화</b-button>
-            <b-button type="is-primary" inverted>실행</b-button>
-            <b-button type="is-primary" inverted>제출</b-button>
+            <b-button type="is-primary" inverted @click="result_default()" >초기화</b-button>
+            <b-button type="is-primary" inverted @click="result_test()">실행</b-button>
+            <b-button type="is-primary" inverted @click="result_submit()">제출</b-button>
           </div>
         </div>
 
@@ -205,6 +212,7 @@ export default {
       verticalClick: false,
       horizontalClick: false,
       counter: 0,
+      resultSection: "default",
       
       guideStyle:{
         width: 'calc(50% - 8px)'
@@ -260,6 +268,17 @@ export default {
       this.content = "function solution(id_list, report, k) {\n\tvar answer = [];\n\treturn answer;\n}\n";
       this.cm.setOption('value',this.content);
     },
+    result_default(){
+      this.resultSection = 'default';
+    }
+    ,
+    result_test(){
+      this.resultSection = 'test';
+    }
+    ,result_submit(){
+      this.resultSection = 'submit';
+    }
+    ,
     verticalMsdwn(){
       this.verticalClick = true;
     },
