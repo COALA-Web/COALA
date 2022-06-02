@@ -4,7 +4,7 @@ import MainView from "../views/MainView.vue";
 import LoginView from "../views/LoginView.vue";
 import UserLevelCheckView from "../views/UserLevelCheckView.vue";
 import ProblemView from "../components/problemSolvingView.vue";
-
+import ProblemView2 from "../components/problemSolvingView2.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -45,6 +45,11 @@ const routes = [
     path: "/ps",
     name: "ps",
     component: ProblemView
+  },
+  {
+    path: "/ps2",
+    name: "ps2",
+    component: ProblemView2
   },
 ];
 
