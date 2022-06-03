@@ -83,7 +83,7 @@
       <div class="guide-section" :style="guideStyle">
         <h6 class="guide-section-title"><b>문제 설명</b></h6>
         <hr>
-        <ProblemOne/>
+        <ProblemOne style="padding:2em"/>
       </div>
       <div class="gutter-vertical" @mousedown="verticalMsdwn()">
         <!-- <p> {{click}}</p>
