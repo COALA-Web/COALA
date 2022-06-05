@@ -1,5 +1,5 @@
 var createError = require('http-errors');
-var express = require('express');
+const express = require('express');
 var path = require('path');
 const history = require('connect-history-api-fallback');
 var cookieParser = require('cookie-parser');
@@ -8,7 +8,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
+const port = 3000
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
+//app.use('/api/users', usersRouter);
 
 // database
 var mysql = require('mysql');
@@ -30,6 +35,69 @@ connection.connect(function (err) {
     }
 });
 
+app.post('/api/login', (req, res) => {
+    const loginId = req.body.loginId;
+    const loginPw = req.body.loginPw;
+    console.log(loginId);
+    console.log(loginPw);
+    // const user = {
+    //     'userid': req.body.userid,
+    //     'password': req.body.password
+    // };
+
+    // 쿼리 수정만 하면됨
+    connection.query('SELECT id, pwd FROM sys.user WHERE id = "' + loginId + '"', function(err, row) {
+        console.log(row[0]);
+        console.log(row[0].id);
+        console.log(row[0].pwd);
+        if(err) {
+            res.json({
+                success: false,
+                message: 'Login Failed!'
+            })
+        }
+        if (row[0].id == loginId && row[0].pwd == loginPw) {
+            res.json({
+                success: true,
+                message: 'Login Successful!'
+            })
+        }
+
+        else {
+            res.json({
+                message: 'Failed!'
+            })
+        }
+    })
+})
+
+
+app.post('/api/levelCheck', (req, res) => {
+    console.log("level check");
+    console.log(req.level.greedy);
+    var greedy = req.body.level.greedy;
+    var dp = req.body.level.dp;
+    var sort = req.body.level.sort;
+    var tree = req.body.level.tree;
+    var graph = req.body.level.graph;
+    console.log("before before query");
+    var sql = 'UPDATE sys.level SET greedy="?", dp="?", sort="?", tree="?", graph="?" WHERE id=2019000000';
+    var params = [greedy,dp,sort,tree,graph];
+    console.log("before query");
+    connection.query(sql, params, function(err) {
+      console.log("query");
+      if (err) throw err;
+      console.log(err);
+    });
+    
+    res.json({
+      success: true,
+      message: 'levelCheck Success!'
+    })
+    
+});
+
+
 app.post('/regist', function (req, res) {
     var user = {
         'userid': req.body.userid,
@@ -44,6 +112,10 @@ app.post('/regist', function (req, res) {
         res.status(200).send('success');
       });
 });
+
+// app.listen(port, () => {
+//     console.log('App listening at http://localhost:${port}')
+// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -75,5 +147,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
 
 module.exports = app;
