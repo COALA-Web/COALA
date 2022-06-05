@@ -69,7 +69,7 @@
                   <input
                     type="text"
                     id="uid"
-                    value=""
+                    v-model="user.userid"
                     style="float: left"
                     placeholder="아이디를 입력하세요" />
                 </dd>
@@ -89,7 +89,7 @@
                   <input
                     type="password"
                     id="upw"
-                    value=""
+                    v-model="user.userpw"
                     placeholder="비밀번호를 입력하세요" />
                 </dd>
               </dl>
@@ -111,7 +111,7 @@
                     font-size: 1em;
                     font-weight: bold;
                   "
-                  @click="loginFn">
+                  @click="login()">
                   로그인
                 </button>
               </div>
@@ -409,12 +409,90 @@ body {
 }
 </style>
 <script>
+import axios from 'axios';
+
 export default {
-  components: {},
-  methods: {
-    loginFn() {
-      this.$router.push({ path: "/levelcheck" });
+  data: function() {
+    return {
+      user: {
+        userid: "",
+        userpw: ""
+      }
     }
+  },
+
+  methods: {
+    login: function() {
+      const args = {
+        loginId: this.user.userid,
+        loginPw: this.user.userpw,
+      };
+
+      axios.post("/api/login", args).then((res) => {
+        alert(res.data.message);
+        this.$router.push({ path: "/levelcheck" });
+      });
+    }
+
+    // axios.post("/api/login").then((res) => {
+    //   state.user = res.data;
+    //   state.loggedIn = true;
+    //   console.log(res.data);
+    // });
+
   }
-};
+}
+
+  // data: function() {
+  //   return {
+  //     userid: "",
+  //     password: "",
+  //   }
+  // }
+
+/*
+  methods: {
+    const loginFn = () => {
+      var url = 'http://localhost:3000/login';
+      const args = {
+        userid: this.userid,
+        password: this.password
+      }
+      axios.post("http://localhost:3000/api/login", args)
+        .then(function(res) {
+          console.log(res);
+          this.$router.push({ path: "/levelcheck" });
+        })
+        .catch(function(err){
+          console.log(err);
+      });
+*/
+/*
+      {
+      this.$http
+        .post("/api/users/login", {
+          userid: this.userid,
+          password: this.password
+        })
+        .then(
+          (res) => {
+            //로그인 성공
+            alert(res.data.message);
+            this.$router.push({ path: "/levelcheck" });
+          },
+          (err) => {
+            // error 를 보여줌
+            alert("Login failed! please check your id or password");
+          }
+        )
+        .catch((err) => {
+          alert(err);
+        });
+    }
+      
+*/
+      //this.$router.push({ path: "/levelcheck" });
+   // }
+ // }
+
 </script>
