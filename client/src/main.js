@@ -16,7 +16,15 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
-library.add(faBell, faCircleUser, faCircleExclamation, faMedal, faRotate);
+import { faGear } from "@fortawesome/free-solid-svg-icons";
+library.add(
+  faBell,
+  faCircleUser,
+  faCircleExclamation,
+  faMedal,
+  faRotate,
+  faGear
+);
 // library.add(faCircleUser);
 
 Vue.prototype.$http = axios;
