@@ -203,15 +203,13 @@ export default {
   mounted() {},
   unmounted() {},
   methods: {
-    // async levelCheck() {
-    //   const res=await this.$http.post("./routes/users/levelCheck", this.level);
-    //   console.log(res);
-    //   console.log(res.status);
-    // }
-
     levelCheck: function() { 
       const args = {
-        level: this.level,
+        greedy: 1,
+        dp: 2,
+        sort: 3,
+        tree: 4,
+        graph: 5,
       };
 
       axios.post("/api/levelCheck", args).then((res) => {
@@ -222,10 +220,13 @@ export default {
         if (res.data.success == false) {
           alert(res.data.message);
         }
+      })
+
+      .catch((err) => {
+          alert(err);
       });
-      // this.$http.post("/levelCheck", {
-      // level: this.level,
     }
+    
   }
 }
 
