@@ -434,65 +434,7 @@ export default {
       });
     }
 
-    // axios.post("/api/login").then((res) => {
-    //   state.user = res.data;
-    //   state.loggedIn = true;
-    //   console.log(res.data);
-    // });
-
   }
 }
-
-  // data: function() {
-  //   return {
-  //     userid: "",
-  //     password: "",
-  //   }
-  // }
-
-/*
-  methods: {
-    const loginFn = () => {
-      var url = 'http://localhost:3000/login';
-      const args = {
-        userid: this.userid,
-        password: this.password
-      }
-      axios.post("http://localhost:3000/api/login", args)
-        .then(function(res) {
-          console.log(res);
-          this.$router.push({ path: "/levelcheck" });
-        })
-        .catch(function(err){
-          console.log(err);
-      });
-*/
-/*
-      {
-      this.$http
-        .post("/api/users/login", {
-          userid: this.userid,
-          password: this.password
-        })
-        .then(
-          (res) => {
-            //로그인 성공
-            alert(res.data.message);
-            this.$router.push({ path: "/levelcheck" });
-          },
-          (err) => {
-            // error 를 보여줌
-            alert("Login failed! please check your id or password");
-          }
-        )
-        .catch((err) => {
-          alert(err);
-        });
-    }
-      
-*/
-      //this.$router.push({ path: "/levelcheck" });
-   // }
- // }
 
 </script>
