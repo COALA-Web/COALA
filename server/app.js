@@ -2,7 +2,8 @@ var createError = require('http-errors');
 const express = require('express');
 var path = require('path');
 const history = require('connect-history-api-fallback');
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -10,9 +11,9 @@ var usersRouter = require('./routes/users');
 
 const app = express();
 const port = 3000
-const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 //app.use('/api/users', usersRouter);
 
 // database
@@ -42,39 +43,51 @@ app.post('/api/login', (req, res) => {
     console.log(loginPw);
 
     connection.query('SELECT id, pwd FROM sys.user WHERE id = "' + loginId + '"', function(err, row) {
-        console.log(row[0]);
-        console.log(row[0].id);
-        console.log(row[0].pwd);
+        
+        console.log(row);
         if(err) {
             res.json({
                 success: false,
                 message: 'Login Failed!'
             })
         }
-        if (row[0].id == loginId && row[0].pwd == loginPw) {
+
+        if(row == "") {
             res.json({
-                success: true,
-                message: 'Login Successful!'
+                success: false,
+                message: '아이디가 존재하지 않습니다.'
             })
         }
 
-        else {
+        else if(row[0].id == loginId && row[0].pwd == loginPw) {
+            const options = {
+                domain: "localhost",
+                path: "/",
+                httpOnly: true
+            };
+
+            res.cookie('userid', loginId);
             res.json({
-                message: 'Failed!'
+                success: true,
+                message: '로그인 되었습니다.'
             })
         }
+
     })
 })
 
 app.post('/api/levelCheck', (req, res) => {
+    
+    console.log(req.cookies.userid);
     const greedy = req.body.greedy;
     const dp = req.body.dp;
     const sort = req.body.sort;
     const tree = req.body.tree;
     const graph = req.body.graph;
+    const id = req.cookies.userid;
 
-    var sql = 'UPDATE sys.level SET greedy="?", dp="?", sort="?", tree="?", graph="?" WHERE id=2019000000';
-    var params = [greedy, dp, sort, tree, graph];
+    var sql = 'UPDATE sys.level SET greedy="?", dp="?", sort="?", tree="?", graph="?" WHERE id="?"';
+    var params = [greedy, dp, sort, tree, graph, id];
     connection.query(sql, params, function(err) {
       if (err) throw err;
     });
@@ -83,6 +96,81 @@ app.post('/api/levelCheck', (req, res) => {
       success: true,
       message: 'levelCheck Success!'
     })
+    
+})
+
+app.post('/api/getProblem', (req, res) => {
+    
+    
+    const id = req.cookies.userid;
+    var tag;
+    var level;
+
+    if(id == 2019000000) {
+        tag = 'data_structure';
+        level = 1;
+    }
+    else {
+        tag = "sort";
+        level = 2;
+    }
+    console.log(tag);
+
+    console.log("before sql");
+    var sql = 'SELECT * FROM sys.problem WHERE tag = "?" and difficulty = ?';
+    var params = [tag, level];
+    console.log(sql);
+    connection.query('SELECT * FROM sys.problem WHERE tag = "'+tag+'" and difficulty = "'+level+'"', function(err, row) {
+        // console.log(sql);
+        // console.log(params);
+        console.log(row[0]);
+        if (err) throw err;
+        else {
+            res.json({
+                success: true,
+                message: 'Get Problem Success!',
+                problems: row
+            })
+        }
+    });
+    
+})
+
+app.post('/api/getReview', (req, res) => {
+
+    const id = req.cookies.userid;
+    var tag;
+    var level;
+
+    if(id == 2019000000) {
+        tag = 'data_structure';
+        level = 1;
+    }
+    else {
+        tag = "sort";
+        level = 2;
+    }
+    console.log(tag);
+
+    console.log("before sql");
+    var sql = 'SELECT * FROM sys.problem WHERE tag = "?" and difficulty = ?';
+    var params = [tag, level];
+    console.log(sql);
+    connection.query('SELECT * FROM sys.problem WHERE tag = "'+tag+'" and difficulty = "'+level+'"', function(err, row) {
+        // console.log(sql);
+        // console.log(params);
+        console.log(row[0]);
+        if (err) throw err;
+        else {
+            res.json({
+                success: true,
+                message: 'Get Problem Success!',
+                problems: row[0]
+            })
+        }
+    });
+    
+    
     
 })
 

@@ -44,30 +44,34 @@
           font-size: 1.6rem;
         ">
         오늘의 컨텐츠
-        <a href="">
+        <a @click="todayNew()">
           <!-- TODO: 아이콘 클릭 시 fa-spin 클래스 넣어주기. -->
-          <font-awesome-icon icon="fa-solid fa-rotate" size="1.2x"
-        /></a>
+          <font-awesome-icon icon="fa-solid fa-rotate" size="1.2x"/>
+        </a>
       </h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent is-6">
           <article class="tile is-child box notification is-dark">
             <p class="subtitle tile-title">오늘의 문제</p>
-            <div class="content">
-              <p>
+            <div class="content_problem">
+              <!-- <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 semper diam at erat pulvinar, at pulvinar felis blandit.
                 Vestibulum volutpat tellus diam, consequat gravida libero
                 rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc
                 dui porta orci, quis semper odio felis ut quam.
-              </p>
+              </p> -->
+              <p>문제 번호 : {{problem.number}}</p>
+              <p>Tag : {{problem.tag}}</p>
+              <p>Level : {{problem.difficulty}}</p>
+              <p>문제 이름 : {{problem.title}}</p>
             </div>
           </article>
         </div>
         <div class="tile is-parent is-6">
           <article class="tile is-child box notification is-dark">
             <p class="subtitle tile-title">오늘의 강의</p>
-            <div class="content">
+            <div class="content_video">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 semper diam at erat pulvinar, at pulvinar felis blandit.
@@ -127,18 +131,75 @@
 </template>
 
 <script>
+import axios from 'axios';
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 import NavbarView from "../components/navbarView.vue";
 
 export default {
+  data: function() {
+      return {
+        problem: {
+          number: 123,
+          title: "aaa",
+          difficulty: 1,
+          tag: "bbb"
+        },
+
+        review: {
+          number: 123,
+          title: "aaa",
+          difficulty: 1,
+          tag: "bbb"
+        }
+      };
+    },
+
+  created() {
+    this.getProblem();
+  },
+
   name: "MainView",
   components: {
     NavbarView
   },
   methods: {
+    async getProblem() {
+      axios.post("/api/getProblem").then((res) => {
+        console.log(res.data.problems);
+        this.problem = res.data.problems[0];
+        console.log(this.problem);
+      });
+      
+    },
+
+    async getReview() {
+      axios.post("/api/getReview").then((res) => {
+        console.log(res.data.problems);
+        this.review = res.data.problems;
+        console.log(this.review);
+      });
+      
+    },
+
     clickMe() {
       this.$buefy.notification.open("Clicked!!");
+    },
+
+    todayNew() {
+      axios.post("/api/getProblem").then((res) => {
+        console.log("renew");
+        console.log(res);
+        this.problem = res.data.problems[1];
+        // this.problem = problem
+      })
+      const args = {
+
+      }
+    },
+
+    updateProblem() {
+      
     }
   }
 };
