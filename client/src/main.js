@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import Buefy from "buefy";
+import axios from "axios";
 import "buefy/dist/buefy.css";
 // require('@/assets/main.scss');
 
@@ -26,6 +27,7 @@ library.add(
 );
 // library.add(faCircleUser);
 
+Vue.prototype.$http = axios;
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.use(Buefy, {

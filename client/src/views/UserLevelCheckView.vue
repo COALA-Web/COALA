@@ -147,48 +147,51 @@
         </div>
         <h2 class="question">구현 가능한 알고리즘</h2>
         <div class="block">
-          <b-checkbox
-            size="is-small"
-            v-model="isImplement"
-            native-value="greedy">
+          <b-checkbox size="is-small" v-model="level.greedy" native-value="greedy">
             그리디
           </b-checkbox>
-          <b-checkbox size="is-small" v-model="isImplement" native-value="dp">
+          <b-checkbox size="is-small" v-model="level.dp" native-value="dp">
             DP
           </b-checkbox>
-          <b-checkbox size="is-small" v-model="isImplement" native-value="sort">
+          <b-checkbox size="is-small" v-model="level.sort" native-value="sort">
             정렬
           </b-checkbox>
-          <b-checkbox size="is-small" v-model="isImplement" native-value="tree">
+          <b-checkbox size="is-small" v-model="level.tree" native-value="tree">
             트리
           </b-checkbox>
-          <b-checkbox
-            size="is-small"
-            v-model="isImplement"
-            native-value="graph">
+          <b-checkbox size="is-small" v-model="level.graph" native-value="graph">
             그래프
           </b-checkbox>
         </div>
         <div style="padding-left: 630px">
-          <b-button type="is-dark" @click="successFn">완료</b-button>
+          <b-button type="is-dark" @click="levelCheck()">완료</b-button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+/* eslint-disable */
+import axios from 'axios';
 import levelCheckNavbarView from "../components/levelCheckNavbarView.vue";
 
 export default {
   components: { levelCheckNavbarView },
-  data() {
+  data: function() {
     return {
+      level: {
+        greedy: "",
+        dp: "",
+        sort: "",
+        tree: "",
+        graph: "",
+      },
       sampleData: "",
       checkboxGroup: [],
       isImplement: [],
       radio: "Java",
       isAmPm: true
-    };
+    }
   },
   computed: {
     format() {
@@ -200,11 +203,33 @@ export default {
   mounted() {},
   unmounted() {},
   methods: {
-    successFn() {
-      this.$router.push({ path: "/main" });
+    levelCheck: function() { 
+      const args = {
+        greedy: 1,
+        dp: 2,
+        sort: 3,
+        tree: 4,
+        graph: 5,
+      };
+
+      axios.post("/api/levelCheck", args).then((res) => {
+        if (res.data.success == true) {
+          alert(res.data.message);
+          this.$router.push("/main");
+        }
+        if (res.data.success == false) {
+          alert(res.data.message);
+        }
+      })
+
+      .catch((err) => {
+          alert(err);
+      });
     }
+    
   }
-};
+}
+
 </script>
 <style scoped>
 .text-left {

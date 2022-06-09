@@ -1,5 +1,5 @@
 var createError = require('http-errors');
-var express = require('express');
+const express = require('express');
 var path = require('path');
 const history = require('connect-history-api-fallback');
 var cookieParser = require('cookie-parser');
@@ -8,7 +8,12 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
+const port = 3000
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
+//app.use('/api/users', usersRouter);
 
 // database
 var mysql = require('mysql');
@@ -29,6 +34,58 @@ connection.connect(function (err) {
         console.log('mysql success!');
     }
 });
+
+app.post('/api/login', (req, res) => {
+    const loginId = req.body.loginId;
+    const loginPw = req.body.loginPw;
+    console.log(loginId);
+    console.log(loginPw);
+
+    connection.query('SELECT id, pwd FROM sys.user WHERE id = "' + loginId + '"', function(err, row) {
+        console.log(row[0]);
+        console.log(row[0].id);
+        console.log(row[0].pwd);
+        if(err) {
+            res.json({
+                success: false,
+                message: 'Login Failed!'
+            })
+        }
+        if (row[0].id == loginId && row[0].pwd == loginPw) {
+            res.json({
+                success: true,
+                message: 'Login Successful!'
+            })
+        }
+
+        else {
+            res.json({
+                message: 'Failed!'
+            })
+        }
+    })
+})
+
+app.post('/api/levelCheck', (req, res) => {
+    const greedy = req.body.greedy;
+    const dp = req.body.dp;
+    const sort = req.body.sort;
+    const tree = req.body.tree;
+    const graph = req.body.graph;
+
+    var sql = 'UPDATE sys.level SET greedy="?", dp="?", sort="?", tree="?", graph="?" WHERE id=2019000000';
+    var params = [greedy, dp, sort, tree, graph];
+    connection.query(sql, params, function(err) {
+      if (err) throw err;
+    });
+    
+    res.json({
+      success: true,
+      message: 'levelCheck Success!'
+    })
+    
+})
+
 
 app.post('/regist', function (req, res) {
     var user = {
@@ -75,5 +132,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+
 
 module.exports = app;

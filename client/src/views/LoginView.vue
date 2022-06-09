@@ -69,7 +69,7 @@
                   <input
                     type="text"
                     id="uid"
-                    value=""
+                    v-model="user.userid"
                     style="float: left"
                     placeholder="아이디를 입력하세요" />
                 </dd>
@@ -89,7 +89,7 @@
                   <input
                     type="password"
                     id="upw"
-                    value=""
+                    v-model="user.userpw"
                     placeholder="비밀번호를 입력하세요" />
                 </dd>
               </dl>
@@ -111,7 +111,7 @@
                     font-size: 1em;
                     font-weight: bold;
                   "
-                  @click="loginFn">
+                  @click="login()">
                   로그인
                 </button>
               </div>
@@ -409,12 +409,32 @@ body {
 }
 </style>
 <script>
+import axios from 'axios';
+
 export default {
-  components: {},
-  methods: {
-    loginFn() {
-      this.$router.push({ path: "/levelcheck" });
+  data: function() {
+    return {
+      user: {
+        userid: "",
+        userpw: ""
+      }
     }
+  },
+
+  methods: {
+    login: function() {
+      const args = {
+        loginId: this.user.userid,
+        loginPw: this.user.userpw,
+      };
+
+      axios.post("/api/login", args).then((res) => {
+        alert(res.data.message);
+        this.$router.push({ path: "/levelcheck" });
+      });
+    }
+
   }
-};
+}
+
 </script>
