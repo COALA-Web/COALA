@@ -17,6 +17,12 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+
+// cookie
+import VueCookies from "vue-cookies"
+Vue.use(VueCookies);
+Vue.$cookies.config("1d") // expire 1일 (global 설정)
+
 library.add(
   faBell,
   faCircleUser,

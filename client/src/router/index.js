@@ -51,6 +51,15 @@ const routes = [
     name: "ps2",
     component: ProblemView2
   },
+  {
+    path: "/start",
+    name: "start",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "start" */ "../views/StartPageView.vue")
+  }
 ];
 
 const router = new VueRouter({
