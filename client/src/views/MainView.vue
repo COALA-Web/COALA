@@ -40,10 +40,14 @@
           font-size: 1.6rem;
         ">
         오늘의 컨텐츠
-        <a href="">
-          <!-- TODO: 아이콘 클릭 시 fa-spin 클래스 넣어주기. -->
-          <font-awesome-icon icon="fa-solid fa-rotate" size="1.2x"
-        /></a>
+        <b-tooltip
+          label="하루에 한번 컨텐츠를 새로고침할 수 있습니다."
+          type="is-light">
+          <a href="">
+            <!-- TODO: 아이콘 클릭 시 fa-spin 클래스 넣어주기. -->
+            <font-awesome-icon icon="fa-solid fa-rotate" size="1.2x"
+          /></a>
+        </b-tooltip>
       </h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent is-6">
@@ -81,9 +85,17 @@
           font-size: 1.6rem;
         ">
         복습 컨텐츠
-        <a href=""
-          ><font-awesome-icon icon="fa-solid fa-rotate" size="1.2x"
-        /></a>
+        <b-tooltip
+          label="하루에 한번 컨텐츠를 새로고침할 수 있습니다."
+          type="is-light">
+          <a id="review_refresh_a" href="" @mouseover.once="mouseOver">
+            <!-- TODO: 아이콘 클릭 시 fa-spin 클래스 넣어주기. -->
+            <font-awesome-icon
+              id="review_refresh_icon"
+              icon="fa-solid fa-rotate"
+              size="1.2x"
+          /></a>
+        </b-tooltip>
       </h1>
       <div class="tile is-ancestor">
         <div class="tile is-parent is-6">
@@ -122,6 +134,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
+/* eslint-disable */
 import NavbarView from "../components/navbarView.vue";
 
 export default {
@@ -163,6 +176,22 @@ export default {
     clickMe() {
       this.$buefy.notification.open("Clicked!!");
     }
+    // 마우스 오버시 아이콘 회전: 추후 마저 구현
+    // mouseOver: function (event) {
+    //   if (event) {
+    //     let curId = event.currentTarget.id;
+    //     if (curId === "review_refresh_a") {
+    //       console.log(document.getElementById("review_refresh_icon"));
+    //       console.log(
+    //         JSON.stringify(
+    //           document.getElementById("review_refresh_icon").getAttribute
+    //         )
+    //       );
+    //       document.getElementById("review_refresh_icon").class += "fa-spin";
+    //     }
+
+    //   }
+    // }
   }
 };
 </script>
