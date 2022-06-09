@@ -142,7 +142,7 @@ app.post('/api/getReview', (req, res) => {
     var tag;
     var level;
 
-    tag = 'DFS';
+    tag = "DFS";
     level = 3;
     
     console.log(tag);
@@ -159,7 +159,7 @@ app.post('/api/getReview', (req, res) => {
             res.json({
                 success: true,
                 message: 'Get Review Success!',
-                problems: row[0]
+                problems: row
             })
         }
     });

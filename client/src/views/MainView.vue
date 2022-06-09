@@ -257,7 +257,7 @@ export default {
     async getReview() {
       axios.post("/api/getReview").then((res) => {
         console.log(res.data.problems);
-        this.review = res.data.problems;
+        this.review = res.data.problems[0];
         console.log(this.review);
       });
       
@@ -269,9 +269,8 @@ export default {
 
     todayNew() {
       axios.post("/api/getProblem").then((res) => {
-        console.log("renew");
-        console.log(res);
         this.problem = res.data.problems[1];
+        console.log(this.problem);
         // this.problem = problem
       })
       const args = {
