@@ -61,7 +61,7 @@
               <a href="" style="font-size: 1.5em">
                 {{problem.number}}
                 {{problem.title}}
-                //{{ todayProblems[2].title }}
+                <!-- {{ todayProblems[2].title }} -->
               </a>
               <p>문제 유형: {{problem.tag}}</p>
               <p>문제 난이도: {{problem.difficulty}}</p>
@@ -76,7 +76,7 @@
 
             <div class="content">
               <a href="" style="font-size: 1.5em">
-                {{ todayLecture[1].title }}
+                <!-- {{ todayLecture[1].title }} -->
               </a>
               <p>여긴 무슨 정보가 들어가야될까?</p>
 
@@ -113,7 +113,7 @@
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
               <!-- 밑 부분도 -->
               <a href="" style="font-size: 1.5em">
-                {{ reviewProblems[2].title }}
+                <!-- {{ reviewProblems[2].title }} -->
               </a>
               <p>문제 유형: 구현, 문자열</p>
 
@@ -127,7 +127,7 @@
             <p class="subtitle tile-title">복습 강의</p>
             <div class="content">
               <a href="" style="font-size: 1.5em">
-                {{ reviewLecture[0].title }}
+                <!-- {{ reviewLecture[0].title }} -->
               </a>
               <p>여긴 무슨 정보가 들어가야될까? - 최초 수강 날짜, 난이도?</p>
             </div>
@@ -172,36 +172,36 @@ export default {
   components: {
     NavbarView
   },
-  data() {
-    return {
-      todayProblems: [
-        { title: "유기농 배추", key: "boj_1012", class: ["BFS, DFS, 그래프"] },
-        { title: "적록색약", key: "boj_10026", class: ["BFS, DFS, 그래프"] },
-        { title: "수 묶기", key: "boj_1744", class: ["Sort, Greedy"] },
-        { title: "공통 부분 문자열", key: "boj_5582", class: ["문자열, DP"] },
-        { title: "LCA", key: "boj_11437", class: ["트리"] }
-      ],
-      reviewProblems: [
-        { title: "트리 순회", key: "boj_1991", class: ["트리, 재귀"] },
-        { title: "단절점과 단절선", key: "boj_14675", class: ["그래프, 트리"] },
-        { title: "가장 많은 글자", key: "boj_1371", class: ["구현, 문자열"] },
-        { title: "후위 표기식", key: "boj_1918", class: ["자료구조, 스택"] },
-        {
-          title: "히스토그램",
-          key: "boj_1725",
-          class: ["자료구조, 세그먼트 트리, 스택, 분할정복"]
-        }
-      ],
-      todayLecture: [
-        { title: "BFS 기초2", key: "bfs_1", class: ["BFS"] },
-        { title: "이진 트리 기초", key: "bfs_1", class: ["트리"] }
-      ],
-      reviewLecture: [
-        { title: "BFS 기초1", key: "bfs_1", class: ["BFS"] },
-        { title: "그래프 탐색 이해하기", key: "bfs_1", class: ["그래프"] }
-      ]
-    };
-  },
+  // data() {
+  //   return {
+  //     todayProblems: [
+  //       { title: "유기농 배추", key: "boj_1012", class: ["BFS, DFS, 그래프"] },
+  //       { title: "적록색약", key: "boj_10026", class: ["BFS, DFS, 그래프"] },
+  //       { title: "수 묶기", key: "boj_1744", class: ["Sort, Greedy"] },
+  //       { title: "공통 부분 문자열", key: "boj_5582", class: ["문자열, DP"] },
+  //       { title: "LCA", key: "boj_11437", class: ["트리"] }
+  //     ],
+  //     reviewProblems: [
+  //       { title: "트리 순회", key: "boj_1991", class: ["트리, 재귀"] },
+  //       { title: "단절점과 단절선", key: "boj_14675", class: ["그래프, 트리"] },
+  //       { title: "가장 많은 글자", key: "boj_1371", class: ["구현, 문자열"] },
+  //       { title: "후위 표기식", key: "boj_1918", class: ["자료구조, 스택"] },
+  //       {
+  //         title: "히스토그램",
+  //         key: "boj_1725",
+  //         class: ["자료구조, 세그먼트 트리, 스택, 분할정복"]
+  //       }
+  //     ],
+  //     todayLecture: [
+  //       { title: "BFS 기초2", key: "bfs_1", class: ["BFS"] },
+  //       { title: "이진 트리 기초", key: "bfs_1", class: ["트리"] }
+  //     ],
+  //     reviewLecture: [
+  //       { title: "BFS 기초1", key: "bfs_1", class: ["BFS"] },
+  //       { title: "그래프 탐색 이해하기", key: "bfs_1", class: ["그래프"] }
+  //     ]
+  //   };
+  // },
   methods: {
     async getProblem() {
       axios.post("/api/getProblem").then((res) => {
