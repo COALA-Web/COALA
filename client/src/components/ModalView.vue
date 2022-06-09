@@ -204,14 +204,23 @@
           </div>
         </b-field>
       </section>
-      <footer class="modal-card-foot">
-        <b-button label="작성완료" type="is-primary" @click="$emit('close')" />
+      <footer class="modal-card-foot" style="padding-left: 500px">
+        <b-button label="임시저장" @click="$emit('close')" />
+        <b-button
+          label="작성완료"
+          type="is-dark"
+          @click="
+            $emit('close');
+            levelCheck();
+          " />
       </footer>
     </div>
   </form>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "ModalView",
   props: ["email", "password", "canCancel"],
@@ -239,6 +248,33 @@ export default {
   computed: {
     format() {
       return this.isAmPm ? "12" : "24";
+    }
+  },
+  methods: {
+    levelCheck: function () {
+      const args = {
+        greedy: 1,
+        dp: 2,
+        sort: 3,
+        tree: 4,
+        graph: 5
+      };
+
+      axios
+        .post("/api/levelCheck", args)
+        .then((res) => {
+          if (res.data.success == true) {
+            alert(res.data.message);
+            this.$router.push("/main");
+          }
+          if (res.data.success == false) {
+            alert(res.data.message);
+          }
+        })
+
+        .catch((err) => {
+          alert(err);
+        });
     }
   }
 };
