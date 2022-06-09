@@ -65,8 +65,8 @@
               </a>
               <p>문제 유형: {{problem.tag}}</p>
               <p>문제 난이도: {{problem.difficulty}}</p>
-              <p>풀이 소요 예상 시간: 48분</p>
-              <p>유사한 레벨의 사용자 50%가 푼 문제</p>
+              <p>풀이 소요 예상 시간: {{problem.expect_time}}분</p>
+              <p>유사한 레벨의 사용자 {{problem.ans_rate}}%가 푼 문제</p>
             </div>
           </article>
         </div>
@@ -76,7 +76,14 @@
 
             <div class="content">
               <a href="" style="font-size: 1.5em">
-                <!-- {{ todayLecture[1].title }} -->
+                <div v-if="userid==2019000000">
+                  <p>{{ todayLecture[0].title}}</p>
+                  <p>{{ todayLecture[0].subtitle}}</p>
+                </div>
+                <div v-else>
+                  <p>{{ todayLecture[1].title}}</p>
+                  <p>{{ todayLecture[1].subtitle}}</p>
+                </div>
               </a>
               <p>여긴 무슨 정보가 들어가야될까?</p>
 
@@ -144,23 +151,40 @@ import axios from 'axios';
 // import HelloWorld from "@/components/HelloWorld.vue";
 /* eslint-disable */
 import NavbarView from "../components/navbarView.vue";
+import VueCookies from "vue-cookies";
 
 export default {
   data: function() {
       return {
+        userid: VueCookies.get('userid'),
+
         problem: {
           number: 123,
           title: "aaa",
           difficulty: 1,
-          tag: "bbb"
+          tag: "bbb",
+          expect_time: 1,
+          ans_rate: 1
         },
 
         review: {
           number: 123,
           title: "aaa",
           difficulty: 1,
-          tag: "bbb"
-        }
+          tag: "bbb",
+          expect_time: 1,
+          ans_rate: 1
+        },
+
+        todayLecture: [
+          { title: "자료구조 기초2", subtitle: "우선순위 큐", key: "자료구조_2", class: ["자료구조"] },
+          { title: "정렬 기초1", subtitle: "버블 정렬", key: "정렬_1", class: ["정렬"] }
+        ],
+        reviewLecture: [
+          { title: "BFS 기초1", key: "bfs_1", class: ["BFS"] },
+          { title: "그래프 탐색 이해하기", key: "bfs_1", class: ["그래프"] }
+        ]
+
       };
     },
 
@@ -203,6 +227,7 @@ export default {
   //   };
   // },
   methods: {
+    
     async getProblem() {
       axios.post("/api/getProblem").then((res) => {
         console.log(res.data.problems);
