@@ -10,7 +10,9 @@
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-item class="margin-horizontal" href="#">추천학습</b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="/main"
+        >추천학습</b-navbar-item
+      >
       <b-navbar-item class="margin-horizontal" href="#">
         선택학습
       </b-navbar-item>
