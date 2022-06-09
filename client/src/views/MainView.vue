@@ -58,11 +58,25 @@
             <!-- 오늘의 문제 컨텐츠 -->
             <div class="content">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
-              <a href="" style="font-size: 1.5em">
+              <div v-if="userid==2019000000">
+                <a href="/ps" style="font-size: 1.5em">
+                  {{problem.number}}
+                  {{problem.title}}
+                  <!-- {{ todayProblems[2].title }} -->
+                </a>
+              </div>
+              <div v-else>
+                <a href="/ps2" style="font-size: 1.5em">
+                  {{problem.number}}
+                  {{problem.title}}
+                  <!-- {{ todayProblems[2].title }} -->
+                </a>
+              </div>
+              <!-- <a href="/ps" style="font-size: 1.5em">
                 {{problem.number}}
                 {{problem.title}}
-                <!-- {{ todayProblems[2].title }} -->
-              </a>
+                 {{ todayProblems[2].title }}
+              </a> -->
               <p>문제 유형: {{problem.tag}}</p>
               <p>문제 난이도: {{problem.difficulty}}</p>
               <p>풀이 소요 예상 시간: {{problem.expect_time}}분</p>
