@@ -429,8 +429,14 @@ export default {
       };
 
       axios.post("/api/login", args).then((res) => {
-        alert(res.data.message);
-        this.$router.push({ path: "/levelcheck" });
+        if(res.data.success == true) {
+          alert(res.data.message);
+          this.$router.push({ path: "/levelcheck" });
+        }
+        else {
+          alert(res.data.message);
+        }
+        
       });
     }
 
