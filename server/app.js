@@ -94,7 +94,7 @@ app.post('/api/levelCheck', (req, res) => {
     
     res.json({
       success: true,
-      message: 'levelCheck Success!'
+      message: '레벨 체크가 완료되었습니다.'
     })
     
 })
