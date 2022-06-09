@@ -58,11 +58,25 @@
             <!-- 오늘의 문제 컨텐츠 -->
             <div class="content">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
-              <a href="" style="font-size: 1.5em">
+              <div v-if="userid==2019000000">
+                <a href="/ps" style="font-size: 1.5em">
+                  {{problem.number}}
+                  {{problem.title}}
+                  <!-- {{ todayProblems[2].title }} -->
+                </a>
+              </div>
+              <div v-else>
+                <a href="/ps2" style="font-size: 1.5em">
+                  {{problem.number}}
+                  {{problem.title}}
+                  <!-- {{ todayProblems[2].title }} -->
+                </a>
+              </div>
+              <!-- <a href="/ps" style="font-size: 1.5em">
                 {{problem.number}}
                 {{problem.title}}
-                <!-- {{ todayProblems[2].title }} -->
-              </a>
+                 {{ todayProblems[2].title }}
+              </a> -->
               <p>문제 유형: {{problem.tag}}</p>
               <p>문제 난이도: {{problem.difficulty}}</p>
               <p>풀이 소요 예상 시간: {{problem.expect_time}}분</p>
@@ -118,14 +132,15 @@
             <p class="subtitle tile-title">복습 문제</p>
             <div class="content">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
-              <!-- 밑 부분도 -->
               <a href="" style="font-size: 1.5em">
-                <!-- {{ reviewProblems[2].title }} -->
+                {{review.number}}
+                {{review.title}}
+                <!-- {{ todayProblems[2].title }} -->
               </a>
-              <p>문제 유형: 구현, 문자열</p>
-
-              <p>풀이 소요 예상 시간: 48분</p>
-              <p>유사한 레벨의 사용자 50%가 푼 문제</p>
+              <p>문제 유형: {{review.tag}}</p>
+              <p>문제 난이도: {{review.difficulty}}</p>
+              <p>풀이 소요 예상 시간: {{review.expect_time}}분</p>
+              <p>유사한 레벨의 사용자 {{review.ans_rate}}%가 푼 문제</p>
             </div>
           </article>
         </div>
@@ -134,9 +149,11 @@
             <p class="subtitle tile-title">복습 강의</p>
             <div class="content">
               <a href="" style="font-size: 1.5em">
-                <!-- {{ reviewLecture[0].title }} -->
+                <p>{{ reviewLecture[0].title}}</p>
+                <p>{{ reviewLecture[0].subtitle}}</p>
               </a>
-              <p>여긴 무슨 정보가 들어가야될까? - 최초 수강 날짜, 난이도?</p>
+              <p>여긴 무슨 정보가 들어가야될까?</p>
+
             </div>
           </article>
         </div>
@@ -181,8 +198,7 @@ export default {
           { title: "정렬 기초1", subtitle: "버블 정렬", key: "정렬_1", class: ["정렬"] }
         ],
         reviewLecture: [
-          { title: "BFS 기초1", key: "bfs_1", class: ["BFS"] },
-          { title: "그래프 탐색 이해하기", key: "bfs_1", class: ["그래프"] }
+          { title: "DFS 기초1", subtitle: "", key: "Dfs_1", class: ["BFS"] }
         ]
 
       };
@@ -190,6 +206,7 @@ export default {
 
   created() {
     this.getProblem();
+    this.getReview();
   },
 
   name: "MainView",
@@ -240,7 +257,7 @@ export default {
     async getReview() {
       axios.post("/api/getReview").then((res) => {
         console.log(res.data.problems);
-        this.review = res.data.problems;
+        this.review = res.data.problems[0];
         console.log(this.review);
       });
       
@@ -252,9 +269,8 @@ export default {
 
     todayNew() {
       axios.post("/api/getProblem").then((res) => {
-        console.log("renew");
-        console.log(res);
         this.problem = res.data.problems[1];
+        console.log(this.problem);
         // this.problem = problem
       })
       const args = {
