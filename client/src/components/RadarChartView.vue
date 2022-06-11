@@ -92,17 +92,6 @@ export default {
             pointHoverBackgroundColor: "#fff",
             pointHoverBorderColor: "rgba(255,99,132,1)",
             data: [38, 48, 40, 79, 59, 27, 70]
-          },
-          {
-            label: "사용자상위 10%",
-            fill: true,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgb(54, 162, 235)",
-            pointBackgroundColor: "rgb(54, 162, 235)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(54, 162, 235)",
-            data: [68, 78, 90, 79, 59, 77, 70]
           }
         ]
       },
