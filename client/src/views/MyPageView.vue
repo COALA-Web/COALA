@@ -130,17 +130,24 @@
                 <p>더보기</p>
               </div>
             </template>
-            <p class="panel-tabs">
-              <a class="is-active">All</a>
+            <p
+              class="panel-tabs"
+              style="padding-top: 10px; padding-bottom: 10px">
+              <strong>그 외의 알고리즘 지표(백분위)</strong>
+              <!-- <a class="is-active">All</a>
               <a>Public</a>
-              <a>Private</a>
+              <a>Private</a> -->
             </p>
             <div class="panel-block">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-              Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius
-              lectus, nec rutrum justo nibh eu lectus. <br />
-              Ut vulputate semper dui. Fusce erat odio, sollicitudin vel erat
-              vel, interdum mattis neque.
+              <div
+                style="
+                  padding-left: 60px;
+                  height: 400px;
+                  width: 550px;
+                  position: relative;
+                ">
+                <bar-chart />
+              </div>
             </div>
           </b-collapse>
         </div>
@@ -161,10 +168,11 @@
 <script>
 import NavbarView from "../components/navbarView.vue";
 import RadarChart from "../components/RadarChartView.vue";
+import BarChart from "../components/BarChartView.vue";
 import RankTable from "../components/RankTableView.vue";
 
 export default {
-  components: { NavbarView, RadarChart, RankTable },
+  components: { NavbarView, RadarChart, BarChart, RankTable },
   data() {
     return {
       sampleData: "",
@@ -242,5 +250,4 @@ export default {
   padding-right: 50px;
   background-color: white;
 }
-
 </style>
