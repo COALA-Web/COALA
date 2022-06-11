@@ -142,17 +142,11 @@ app.post('/api/getReview', (req, res) => {
     var tag;
     var level;
 
-    if(id == 2019000000) {
-        tag = 'data_structure';
-        level = 1;
-    }
-    else {
-        tag = "sort";
-        level = 2;
-    }
+    tag = "DFS";
+    level = 3;
+    
     console.log(tag);
 
-    console.log("before sql");
     var sql = 'SELECT * FROM sys.problem WHERE tag = "?" and difficulty = ?';
     var params = [tag, level];
     console.log(sql);
@@ -164,8 +158,8 @@ app.post('/api/getReview', (req, res) => {
         else {
             res.json({
                 success: true,
-                message: 'Get Problem Success!',
-                problems: row[0]
+                message: 'Get Review Success!',
+                problems: row
             })
         }
     });
