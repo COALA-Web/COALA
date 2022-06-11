@@ -5,6 +5,7 @@ import LoginView from "../views/LoginView.vue";
 import UserLevelCheckView from "../views/UserLevelCheckView.vue";
 import ProblemView from "../components/problemSolvingView.vue";
 import ProblemView2 from "../components/problemSolvingView2.vue";
+import SelectView from "../views/SelectiveContentsView.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -50,6 +51,11 @@ const routes = [
     path: "/ps2",
     name: "ps2",
     component: ProblemView2
+  },
+  {
+    path: "/select",
+    name: "select",
+    component: SelectView
   },
   {
     path: "/start",
