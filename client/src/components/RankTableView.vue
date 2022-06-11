@@ -34,13 +34,28 @@ export default {
         {
           field: "solved_problem_cnt",
           label: "푼 문제 수",
+          width: "150px",
+          numeric: true,
+          centered: true
+        },
+        {
+          field: "solved_problem_cnt",
+          label: "정답률",
+          width: "100px",
+          centered: true
+        },
+        {
+          field: "solved_problem_cnt",
+          label: "정확도",
           width: "100px",
           numeric: true,
           centered: true
         },
         {
-          field: "rank",
-          label: "문제 유형",
+          field: "solved_problem_cnt",
+          label: "레벨",
+          width: "100px",
+          numeric: true,
           centered: true
         }
       ]
