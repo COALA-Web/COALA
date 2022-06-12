@@ -26,10 +26,52 @@
           <!-- <span class="profile-name">코알라 님</span>
           <span class="profile-major">소프트웨어학부</span> -->
         </div>
-        <div style="float: right; margin-top: -100px">
-          <a href="/">
-            <font-awesome-icon icon="fa-gear" size="2x" />
-          </a>
+      </div>
+
+      <!-- 실력 지표 한눈에 보기 -->
+      <div
+        class="container"
+        style="padding-left: 300px; padding-right: 300px; padding-top: 40px">
+        <h1 class="bold align-left">실력 지표 한눈에 보기</h1>
+        <div class="div-border">
+          <radar-chart />
+          <br />
+          <br />
+          <b-collapse
+            aria-id="contentIdForA11y2"
+            class="panel"
+            animation="slide"
+            v-model="isOpen">
+            <template #trigger>
+              <div
+                style="height: 40px; padding-top: 7px"
+                class="panel-heading"
+                role="button"
+                aria-controls="contentIdForA11y2"
+                :aria-expanded="isOpen">
+                <p>더보기</p>
+              </div>
+            </template>
+            <p
+              class="panel-tabs"
+              style="padding-top: 10px; padding-bottom: 10px">
+              <strong>그 외의 알고리즘 지표(백분위)</strong>
+              <!-- <a class="is-active">All</a>
+              <a>Public</a>
+              <a>Private</a> -->
+            </p>
+            <div class="panel-block">
+              <div
+                style="
+                  padding-left: 60px;
+                  height: 400px;
+                  width: 550px;
+                  position: relative;
+                ">
+                <bar-chart />
+              </div>
+            </div>
+          </b-collapse>
         </div>
       </div>
     </div>
@@ -55,10 +97,11 @@
 <script>
 import NavbarView from "../components/navbarView.vue";
 import RadarChart from "../components/RadarChartView.vue";
+import BarChart from "../components/BarChartView.vue";
 import RankTable from "../components/RankTableView.vue";
 
 export default {
-  components: { NavbarView, RadarChart, RankTable },
+  components: { NavbarView, RadarChart, BarChart, RankTable },
   data() {
     return {
       sampleData: ""
@@ -101,5 +144,33 @@ export default {
   /* margin-top: 40px; */
   padding-right: 200px;
   /* padding-bottom: 40px; */
+}
+
+.profile-rank {
+  text-align: left;
+  float: left;
+  font-size: 1rem;
+  /* padding-top: 10px; */
+  /* margin-top: 40px; */
+  /* padding-right: 200px; */
+  /* padding-bottom: 40px; */
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.div-border {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: white;
 }
 </style>
