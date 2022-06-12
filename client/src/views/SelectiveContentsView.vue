@@ -20,8 +20,8 @@
             
         </p> -->
         <p class="panel-tabs">
-            <a class="is-active"> 강의 </a>
-            <a > 문제 </a>
+            <a  class="is-active" > 강의 </a>
+            <a href="/select2"> 문제 </a>
         </p>
         <!-- <div class="control">
             <div class="select">

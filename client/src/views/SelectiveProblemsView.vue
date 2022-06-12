@@ -19,7 +19,7 @@
             :style="{ color: 'gold' }" />
         </p> -->
         <p class="panel-tabs">
-            <a > 강의 </a>
+            <a href="/select"> 강의 </a>
             <a class="is-active"> 문제 </a>
         </p>
 
