@@ -6,7 +6,7 @@
           <font-awesome-icon icon="fa-solid fa-circle-exclamation" />
           전체 공지 사항
         </b-notification>
-        <p
+        <!-- <p
           style="
             text-align: left;
             font-size: 1.8rem;
@@ -17,7 +17,23 @@
           <font-awesome-icon
             icon="fa-solid fa-medal"
             :style="{ color: 'gold' }" />
+            
+        </p> -->
+        <p class="panel-tabs">
+            <a class="is-active"> 강의 </a>
+            <a > 문제 </a>
         </p>
+        <!-- <div class="control">
+            <div class="select">
+                <select>
+                    <option>
+                        aaa
+                    </option>
+                    <option>문제 보기</option>
+                </select>
+            </div>
+        </div> -->
+     
 
 
     <!-- <div style="background-color: #F0F0F0;padding-left: 5px;padding-bottom: 25px;">
@@ -346,8 +362,10 @@ name: "SelectiveContentsView",
         },
         mouseLeave(){
             this.mouse_over = false;
+        },
+        test(){
+            alert("aaa");
         }
-
     }
 }
 
