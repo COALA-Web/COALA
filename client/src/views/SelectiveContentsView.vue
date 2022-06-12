@@ -20,7 +20,7 @@
         </p>
 
 
-    <div style="background-color: #F0F0F0;padding-left: 5px;padding-bottom: 25px;">
+    <!-- <div style="background-color: #F0F0F0;padding-left: 5px;padding-bottom: 25px;">
         
         <div class="columns " style="padding-top: 15px;">
             <div class="column is-one-quarter"></div>
@@ -135,7 +135,7 @@
         <div style="padding-top: 14px; ">
             <p style="font-size:20px">인공지능 분석 결과 코알라 님은 <b>{{algorithm_topic}} 알고리즘</b>에 대해 <b>상위 {{algorithm_percent}} </b> 영역에 위치합니다. </p>
         </div>
-    </div>
+    </div> -->
     <!-- <div style="height: 30px;"></div>
     <div style="background-color:#F0F0F0">
         <p style="font-size: 30px; padding-top: 10px;padding-left: 30px;text-align: left;"> Contents</p>
@@ -192,10 +192,71 @@
             </div>
         </div>
     </div>
-    <div style="height: 30px;"></div>
+    <div style="height: 70px;"></div>
 
     <div style="background-color:#F0F0F0">
-        <p style="font-size: 30px; padding-top: 10px;padding-left: 30px;text-align: left;">모든 강의</p>
+        <div class="columns">
+            <div class="column is-one-quarter" >
+                <p style="font-size: 30px; padding-top: 10px;padding-left: 30px;text-align: left;">모든 강의</p>
+            </div>
+            <div class="column is-half" >
+                <b-field>
+                    <b-input placeholder="찾고 싶은 강의 이름 또는 ID를 입력해 주세요."
+                        type="search"
+                        icon="magnify"
+                        icon-clickable
+                        @icon-click="searchIconClick">
+                    </b-input>
+                </b-field>
+            </div>
+            
+        </div>
+        
+        
+        <div class="columns">
+            <div class="column is-one-quarter" >
+                <img src="@/assets/1.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/2.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/3.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/4.png" />
+            </div>
+        </div>
+        
+        <div class="columns">
+            <div class="column is-one-quarter" >
+                <img src="@/assets/5.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/6.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/7.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/8.png" />
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter" >
+                <img src="@/assets/9.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/10.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/11.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <img src="@/assets/12.png" />
+            </div>
+        </div>
+        
 
     </div>
 
