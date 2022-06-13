@@ -409,39 +409,41 @@ body {
 }
 </style>
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       user: {
         userid: "",
         userpw: ""
       }
-    }
+    };
   },
 
   methods: {
-    login: function() {
+    login: function () {
       const args = {
         loginId: this.user.userid,
-        loginPw: this.user.userpw,
+        loginPw: this.user.userpw
       };
 
-      axios.post("/api/login", args).then((res) => {
+      this.$store.commit("user/setUser", {
+        name: "coala",
+        email: "coco@naver.com",
+        tel: "010-0000-0000"
+      });
 
-        if(res.data.success == true) {
+      axios.post("/api/login", args).then((res) => {
+        if (res.data.success == true) {
           alert(res.data.message);
-          //this.$router.push({ path: "/levelcheck" });
-          this.$router.push({ path: "/start" });
-        }
-        else {
+          this.$router.push({ path: "/levelcheck" });
+          // this.$router.push({ path: "/start" });
+        } else {
           alert(res.data.message);
         }
       });
     }
-
   }
-}
-
+};
 </script>

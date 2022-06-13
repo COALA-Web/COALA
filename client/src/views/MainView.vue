@@ -1,8 +1,9 @@
 <template>
   <div class="main">
     <!-- <b-message> </b-message> -->
-    <navbar-view />
+
     <div class="container" style="padding-left: 100px; padding-right: 100px">
+      <navbar-view />
       <div>
         <b-notification type="is-warning" aria-close-label="Close notification">
           <font-awesome-icon icon="fa-solid fa-circle-exclamation" />

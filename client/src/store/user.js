@@ -1,0 +1,31 @@
+import VueCookies from "vue-cookies";
+
+export const user = {
+  namespaced: true,
+  state() {
+    return {
+      userInfo: {}
+    };
+  },
+  getters: {
+    isLogin() {
+      if (VueCookies.get("userInfo")) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
+  mutations: {
+    // vue-cookies
+    setUser(state, userInfo) {
+      state.userInfo = userInfo;
+      VueCookies.set("userInfo", userInfo, "8h");
+    },
+    logout(state) {
+      state.userInfo = {};
+      VueCookies.remove("userInfo");
+    }
+  },
+  actions: {}
+};
