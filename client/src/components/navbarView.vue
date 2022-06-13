@@ -29,7 +29,7 @@
             <font-awesome-icon icon="fa-bell" size="2x" shake />
           </a>
           <b-dropdown
-            v-show="isLoginData"
+            v-if="isLoginData === 'true'"
             :triggers="['hover']"
             aria-role="list">
             <template #trigger>
@@ -45,7 +45,7 @@
           </b-dropdown>
 
           <b-button
-            v-show="!isLoginData"
+            v-if="isLoginData === 'false'"
             label="로그인"
             type="is-dark"
             @click="route('login')" />
@@ -56,7 +56,7 @@
   <!-- !navbar -->
 </template>
 <script>
-import store from "../store";
+// import store from "../store";
 export default {
   name: "navbarView",
   props: {
@@ -64,48 +64,25 @@ export default {
   },
   data() {
     return {
-      isLoginData: false
+      // isLoginData: false,
+      isLoginData: localStorage.getItem("isLogin")
     };
   },
-  // watch: {
-  //   isLoginData: function () {
-  //     console.log(this.isLoginData);
-  //     console.log("안녕");
-  //     if (store.getters["user/isLogin"]) {
-  //       this.isLoginData = true;
-  //     } else {
-  //       this.isLoginData = false;
-  //     }
-  //   }
-  // },
-  // beforeCreate() {},
   mounted() {
-    if (store.getters["user/isLogin"]) {
-      this.isLoginData = true;
-      // this.$router.go();
-    } else {
-      this.isLoginData = false;
-      // this.$router.go();
-    }
     console.log(this.isLoginData);
-    // this.$router.go();
-
-    // window.onload = function () {
-    //   if (!window.location.hash) {
-    //     window.location = window.location + "#loaded";
-    //     window.location.reload();
-    //   }
-    // };
-  },
-  beforeMount() {
-    // this.$router.go();
+    // if (store.getters["user/isLogin"]) {
+    //   this.isLoginData = true;
+    // } else {
+    //   this.isLoginData = false;
+    // }
   },
   methods: {
     logout: function () {
-      this.isLoginData = false;
-      this.$store.commit("user/logout");
+      localStorage.setItem("isLogin", false);
+      // this.isLoginData = false;
+      // this.$store.commit("user/logout");
       this.$router.push({ path: "/start" });
-      this.$router.go();
+      // this.$router.go();
     },
     async route(param) {
       if (param) {
@@ -114,7 +91,7 @@ export default {
         } else if (param === "mypage") {
           this.$router.push({ path: "/mypage" });
         }
-        this.$router.go();
+        // this.$router.go();
       }
     }
   }

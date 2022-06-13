@@ -428,6 +428,8 @@ export default {
         loginPw: this.user.userpw
       };
 
+      localStorage.setItem("isLogin", true);
+
       this.$store.commit("user/setUser", {
         name: "coala",
         email: "coco@naver.com",
