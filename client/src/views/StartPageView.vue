@@ -37,6 +37,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import NavbarView from "../components/navbarView.vue";
 
 export default {
@@ -73,7 +74,7 @@ export default {
   unmounted() {},
   methods: {
     getImgUrl(value) {
-      return `https://picsum.photos/id/43${value}/1230/500`;
+      return `../assets/coala_intro_${value}.png`;
     },
     info(value) {
       this.carousel = value;
