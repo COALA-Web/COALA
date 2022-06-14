@@ -12,12 +12,12 @@
         </b-steps>
         <!-- 1: 학습 패턴 설정 -->
         <div v-if="nextCnt == 0">
-          <b-field class="q-field">
-            <div class="q-question">
+          <!-- 학습 가능 요일 -->
+          <div>
+            <b-field class="q">
               <p>학습 가능 요일</p>
-            </div>
-
-            <b-field class="q-answer">
+            </b-field>
+            <b-field class="a">
               <b-checkbox-button
                 size="is-small"
                 v-model="checkboxGroup"
@@ -61,28 +61,30 @@
                 일
               </b-checkbox-button>
             </b-field>
-          </b-field>
-          <b-field class="q-field">
-            <div class="q-question">
-              <p>학습 컨텐츠 갱신 시간</p>
-            </div>
+          </div>
 
-            <section class="q-answer">
-              <b-field>
-                <b-clockpicker
-                  size="is-small"
-                  rounded
-                  placeholder="     Click to select..."
-                  :hour-format="format">
-                </b-clockpicker>
-              </b-field>
-            </section>
-          </b-field>
-          <b-field class="q-field">
-            <div class="q-question">
-              <p>추천받고 싶은 컨텐츠</p>
-            </div>
-            <div class="block q-answer">
+          <!-- 학습 컨텐츠 갱신 시간 -->
+          <div>
+            <b-field class="q">
+              <p>학습 컨텐츠 갱신 시간</p>
+            </b-field>
+
+            <b-field class="a" style="width: 200px">
+              <b-clockpicker
+                size="is-small"
+                rounded
+                placeholder="학습 시간을 선택해주세요."
+                :hour-format="format">
+              </b-clockpicker>
+            </b-field>
+          </div>
+
+          <!-- 추천받고싶은 컨텐츠 -->
+          <div>
+            <b-field class="q">
+              <p>추천받고 싶은 컨텐츠 유형</p>
+            </b-field>
+            <b-field class="block a">
               <b-radio
                 size="is-small"
                 v-model="radio"
@@ -106,16 +108,16 @@
               </b-radio>
 
               <!-- TODO: 입력창 받을지 생각 -->
-            </div>
-          </b-field>
+            </b-field>
+          </div>
         </div>
         <!-- 2. 실력 체크 -->
         <div v-if="nextCnt == 1">
-          <b-field class="q-field">
-            <div class="q-question">
+          <!-- <div>
+            <b-field class="q">
               <p>나의 코딩 실력은?</p>
-            </div>
-            <div class="q-answer" style="width: 400px">
+            </b-field>
+            <b-field class="a" style="width: 400px">
               <b-field label="">
                 <b-slider size="is-medium" :min="0" :max="5">
                   <template v-for="val in [0, 1, 2, 3, 4, 5]">
@@ -125,15 +127,15 @@
                   </template>
                 </b-slider>
               </b-field>
-            </div>
-          </b-field>
+            </b-field>
+          </div> -->
 
-          <b-field class="q-field">
-            <div class="q-question">
+          <div>
+            <b-field class="q">
               <p>문제 풀이시 선호하는 언어는?</p>
-            </div>
+            </b-field>
 
-            <div class="block q-answer">
+            <b-field class="block a">
               <b-radio
                 size="is-small"
                 v-model="radio"
@@ -162,15 +164,14 @@
                 native-value="etc">
                 기타
               </b-radio>
-              언어 추가하기.
               <!-- TODO: 입력창 받을지 생각 -->
-            </div>
-          </b-field>
+            </b-field>
+          </div>
 
-          <b-field class="q-field">
-            <div class="q-question">
-              <p>알고리즘 학습 수준</p>
-            </div>
+          <div>
+            <b-field class="q">
+              <p>알고리즘별 학습 수준</p>
+            </b-field>
             <div>
               <p>0: 아예 모른다/들어본 적은 있다.</p>
               <p>1: 개념만 알고있다.</p>
@@ -178,7 +179,20 @@
               <p>3: 자유자재로 다룰 수 있다.</p>
             </div>
 
-            <div class="block q-answer">
+            <div>
+              <p style="float: left">그리디</p>
+              <b-field style="width: 250px">
+                <b-slider size="is-medium" :min="0" :max="5">
+                  <template v-for="val in [0, 1, 2, 3, 4, 5]">
+                    <b-slider-tick :value="val" :key="val">{{
+                      val
+                    }}</b-slider-tick>
+                  </template>
+                </b-slider>
+              </b-field>
+            </div>
+
+            <!-- <b-field class="block a">
               <b-checkbox
                 size="is-small"
                 v-model="checkboxGroup"
@@ -209,44 +223,8 @@
                 native-value="graph">
                 그래프
               </b-checkbox>
-            </div>
-          </b-field>
-
-          <b-field class="q-field">
-            <div class="q-question">
-              <p>구현 가능한 알고리즘</p>
-            </div>
-
-            <div class="block q-answer">
-              <b-checkbox
-                size="is-small"
-                v-model="level.greedy"
-                native-value="greedy">
-                그리디
-              </b-checkbox>
-              <b-checkbox size="is-small" v-model="level.dp" native-value="dp">
-                DP
-              </b-checkbox>
-              <b-checkbox
-                size="is-small"
-                v-model="level.sort"
-                native-value="sort">
-                정렬
-              </b-checkbox>
-              <b-checkbox
-                size="is-small"
-                v-model="level.tree"
-                native-value="tree">
-                트리
-              </b-checkbox>
-              <b-checkbox
-                size="is-small"
-                v-model="level.graph"
-                native-value="graph">
-                그래프
-              </b-checkbox>
-            </div>
-          </b-field>
+            </b-field> -->
+          </div>
         </div>
         <div v-if="nextCnt == 2">
           <radar-chart />
@@ -395,9 +373,26 @@ export default {
   font-weight: bold;
 }
 
+.q {
+  clear: both;
+  font-size: 1.35rem;
+  font-weight: bold;
+  float: left;
+  padding-left: 20px;
+}
+
+.a {
+  clear: both;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding-left: 50px;
+  /* position: absolute; */
+}
+
 .q-answer {
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   margin-top: 40px;
+  /* margin-bottom: 80px; */
 }
 </style>
