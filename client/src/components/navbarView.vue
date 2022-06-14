@@ -13,7 +13,7 @@
       <b-navbar-item class="margin-horizontal" href="/main"
         >추천학습</b-navbar-item
       >
-      <b-navbar-item class="margin-horizontal" href="#">
+      <b-navbar-item class="margin-horizontal" href="/select">
         선택학습
       </b-navbar-item>
       <b-navbar-item class="margin-horizontal" href="#"> 게시판 </b-navbar-item>

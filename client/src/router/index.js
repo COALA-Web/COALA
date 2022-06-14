@@ -6,6 +6,8 @@ import MypageView from "../views/MyPageView.vue";
 import UserLevelCheckView from "../views/UserLevelCheckView.vue";
 import ProblemView from "../components/problemSolvingView.vue";
 import ProblemView2 from "../components/problemSolvingView2.vue";
+import SelectView from "../views/SelectiveContentsView.vue";
+import SelectView2 from "../views/SelectiveProblemsView.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -57,6 +59,16 @@ const routes = [
     path: "/ps2",
     name: "ps2",
     component: ProblemView2
+  },
+  {
+    path: "/select",
+    name: "select",
+    component: SelectView
+  },
+  {
+    path: "/select2",
+    name: "select2",
+    component: SelectView2
   },
   {
     path: "/start",

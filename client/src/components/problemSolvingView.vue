@@ -1,27 +1,21 @@
 <template>
 <body>
-  <!-- 유리님꺼 -->
-  <div class="nav_bar" style="height:5%; width:100%; background-color: #FAEBD7" >
-    <p>임시 nav bar </p>
-  </div>
+ 
 
   <div class="main theme">
   
-    <div class="problem-nav">
+    <div class="problem-nav" style="height:10%;text-align: left;" >
       <div class="columns is-variable is-1-mobile is-0-tablet is-2-desktop is-8-widescreen">
         <div class="column is-one-quarter">
           <br>  <p style="text-indent: 20px;font-size:25px"><b>{{topic}}</b></p>
         </div>
-        <div class="column is-two-fifths">
+        <div class="column is-half">
+        </div>
+        <div class="column is-one-fifths">
         </div>
         
-        <div class="column">
-          <div class="buttons">
-            <b-button type="is-light">light</b-button>
-            <b-button type="is-dark">dark</b-button>
-          </div>
-        </div>
-        <div class="column">
+       
+        <div class="column" style="padding-top:20px">
          
           <b-dropdown v-model="language" aria-role="list">
             <template v-if="language=='Go'" #trigger>
@@ -66,24 +60,19 @@
             </b-dropdown-item>
 
         </b-dropdown>
-
-
         </div>
-        <div class="column">
-          <img src="../assets/account.png"/>
-          <img src="../assets/home.png"/>
-          <img src="../assets/dashboard.png"/>
+        <div class="column" style="padding-top:20px">
+          <b-button type="is-danger" >Exit</b-button>
         </div>
-
       </div>
-      
     </div>
-    
+    <div style="width:100%;height:1px;background-color: grey;"></div>
+
+      
     <div class="contents" @mouseup="verticalMsup()" @mousemove="verticalMove">
       <div class="guide-section" :style="guideStyle">
-        <h6 class="guide-section-title"><b>문제 설명</b></h6>
-        <hr>
-        <ProblemOne style="padding:2em"/>
+        <h6 class="guide-section-title" style="padding:0 2em;text-align:left"><b>문제 설명</b></h6>
+        <ProblemOne style="padding:0 2em"/>
       </div>
       <div class="gutter-vertical" @mousedown="verticalMsdwn()">
         <!-- <p> {{click}}</p>
@@ -206,7 +195,7 @@ export default {
   name: 'App',
   data(){
     return{
-      topic : "알고리즘 문제",
+      topic : "신고 결과 받기",
       content: 'def solution(id_list, report, k):\n\tanswer = []\n\treturn answer\n',
       language: "Python3",
       verticalClick: false,
@@ -341,7 +330,7 @@ html, body {
   background-color: #F0F0F0;
 }
 .problem-nav{
-  height:7%;
+  height:50%;
   width:100%;
 }
 
@@ -356,7 +345,8 @@ html, body {
   height: 100%;
   display: inline-block;
   padding: 1em;
-  overflow: scroll
+  overflow: scroll;
+  text-align: left;
 }
 .guide-section-title{
   font-family: arial;
@@ -411,7 +401,7 @@ html, body {
 }
 .bottom-section{
   margin: 1em;
-  height:8%;
+  height:auto;
   width:100%;
 }
 
