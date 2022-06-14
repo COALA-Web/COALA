@@ -1,251 +1,84 @@
 <template>
-  <div class="main" style="background-color: #f0f0f0; padding-bottom: 100px">
-    <level-check-navbar-view />
-    <div
-      style="
-        background-color: #dbdbdb;
-        text-align: left;
-        padding-left: 80px;
-        height: 40px;
-      ">
-      <span style="vertical-align: -10px"> 초기 수준 분석</span>
-    </div>
+  <div>
+    <navbar-view />
+    <div class="container" style="padding-left: 100px; padding-right: 100px">
+      <div style="font-size: 3rem; font-weight: bold">
+        <p>안녕하세요!</p>
+        <p>코알라 님.</p>
+      </div>
+      <hr class="horizon-line" />
 
-    <div class="container" style="margin-top: 100px">
-      <div
-        class="notification is-white text-left"
-        style="margin-left: 200px; margin-right: 400px">
-        <h1 class="bottom-line"><strong>알고리즘 실력 분석</strong></h1>
-        <h2 class="question">나의 코딩 실력은?</h2>
-        <div style="padding-left: 100px; padding-right: 300px">
-          <b-field label="">
-            <b-slider size="is-medium" :min="0" :max="5">
-              <template v-for="val in [0, 1, 2, 3, 4, 5]">
-                <b-slider-tick :value="val" :key="val">{{ val }}</b-slider-tick>
-              </template>
-            </b-slider>
-          </b-field>
-        </div>
-        <h2 class="question">문제 풀이 시 선호하는 언어</h2>
-        <!-- TODO: DB 연결 필요한 부분 -->
-        <div class="block">
-          <b-radio
-            size="is-small"
-            v-model="radio"
-            name="name"
-            native-value="C++">
-            C++
-          </b-radio>
-          <b-radio
-            size="is-small"
-            v-model="radio"
-            name="name"
-            native-value="Java">
-            Java
-          </b-radio>
-          <b-radio
-            size="is-small"
-            v-model="radio"
-            name="name"
-            native-value="Python">
-            Python
-          </b-radio>
-          <b-radio
-            size="is-small"
-            v-model="radio"
-            name="name"
-            native-value="etc">
-            기타
-          </b-radio>
-          <!-- TODO: 입력창 받을지 생각 -->
-        </div>
-        <h2 class="question">학습 가능 요일</h2>
-        <b-field>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="mon">
-            월
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="tue">
-            화
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="wed">
-            수
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="thu">
-            목
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="fri">
-            금
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="sat">
-            토
-          </b-checkbox-button>
-          <b-checkbox-button
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="sun">
-            일
-          </b-checkbox-button>
-        </b-field>
-        <h2 class="question">학습 콘텐츠 갱신 시간</h2>
-        <section>
-          <b-field style="padding-right: 540px">
-            <b-clockpicker
-              size="is-small"
-              rounded
-              placeholder="     Click to select..."
-              :hour-format="format">
-            </b-clockpicker>
-          </b-field>
-        </section>
-        <h2 class="question">알고있는 알고리즘</h2>
-        <div class="block">
-          <b-checkbox
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="greedy">
-            그리디
-          </b-checkbox>
-          <b-checkbox size="is-small" v-model="checkboxGroup" native-value="dp">
-            DP
-          </b-checkbox>
-          <b-checkbox
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="sort">
-            정렬
-          </b-checkbox>
-          <b-checkbox
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="tree">
-            트리
-          </b-checkbox>
-          <b-checkbox
-            size="is-small"
-            v-model="checkboxGroup"
-            native-value="graph">
-            그래프
-          </b-checkbox>
-        </div>
-        <h2 class="question">구현 가능한 알고리즘</h2>
-        <div class="block">
-          <b-checkbox size="is-small" v-model="level.greedy" native-value="greedy">
-            그리디
-          </b-checkbox>
-          <b-checkbox size="is-small" v-model="level.dp" native-value="dp">
-            DP
-          </b-checkbox>
-          <b-checkbox size="is-small" v-model="level.sort" native-value="sort">
-            정렬
-          </b-checkbox>
-          <b-checkbox size="is-small" v-model="level.tree" native-value="tree">
-            트리
-          </b-checkbox>
-          <b-checkbox size="is-small" v-model="level.graph" native-value="graph">
-            그래프
-          </b-checkbox>
-        </div>
-        <div style="padding-left: 630px">
-          <b-button type="is-dark" @click="levelCheck()">완료</b-button>
-        </div>
+      <!-- 레벨 체크 안내 -->
+      <div>
+        <p>
+          초기 학습 컨텐츠 추천을 위해 간단한 설문조사가 필요합니다? <br />
+          <br />
+          <br />
+        </p>
+
+        <p>
+          알고리즘 실력을 진단한 뒤 <br />
+          지금 바로 학습을 시작해보세요!
+          <br />
+          <br />
+          <br />
+        </p>
+
+        <b-button
+          label="레벨 체크 시작하기"
+          type="is-primary"
+          size="is-medium"
+          @click="isComponentModalActive = true" />
+
+        <b-modal
+          v-model="isComponentModalActive"
+          has-modal-card
+          trap-focus
+          :destroy-on-hide="false"
+          aria-role="dialog"
+          aria-label="Example Modal"
+          close-button-aria-label="Close"
+          :can-cancel="false"
+          aria-modal>
+          <template #default="props">
+            <modal-view v-bind="formProps" @close="props.close" />
+          </template>
+        </b-modal>
       </div>
     </div>
   </div>
 </template>
 <script>
-/* eslint-disable */
-import axios from 'axios';
-import levelCheckNavbarView from "../components/levelCheckNavbarView.vue";
+import NavbarView from "../components/navbarView.vue";
+import ModalView from "../components/ModalView.vue";
 
 export default {
-  components: { levelCheckNavbarView },
-  data: function() {
+  components: { NavbarView, ModalView },
+  data() {
     return {
-      level: {
-        greedy: "",
-        dp: "",
-        sort: "",
-        tree: "",
-        graph: "",
-      },
-      sampleData: "",
-      checkboxGroup: [],
-      isImplement: [],
-      radio: "Java",
-      isAmPm: true
-    }
-  },
-  computed: {
-    format() {
-      return this.isAmPm ? "12" : "24";
-    }
+      isComponentModalActive: false,
+      formProps: {
+        email: "evan@you.com",
+        password: "testing"
+      }
+    };
   },
   setup() {},
   created() {},
   mounted() {},
   unmounted() {},
   methods: {
-    levelCheck: function() { 
-      const args = {
-        greedy: 1,
-        dp: 2,
-        sort: 3,
-        tree: 4,
-        graph: 5,
-      };
-
-      axios.post("/api/levelCheck", args).then((res) => {
-        if (res.data.success == true) {
-          alert(res.data.message);
-          this.$router.push("/main");
-        }
-        if (res.data.success == false) {
-          alert(res.data.message);
-        }
-      })
-
-      .catch((err) => {
-          alert(err);
-      });
+    levelCheck: function () {
+      this.$router.push("/levelcheck");
     }
-    
   }
-}
-
+};
 </script>
 <style scoped>
-.text-left {
-  text-align: left;
-}
-
-.bottom-line {
-  padding-top: 5px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  border-bottom: 1px solid black;
-}
-
-.question {
-  color: "3c3c3c";
-  padding-top: 50px;
-  padding-bottom: 13px;
+.horizon-line {
+  width: 40%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 </style>
