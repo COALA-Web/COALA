@@ -62,7 +62,7 @@
         </b-dropdown>
         </div>
         <div class="column" style="padding-top:20px">
-          <b-button type="is-danger" >Exit</b-button>
+          <b-button type="is-danger" @click="onClickRedirect()">Exit</b-button>
         </div>
       </div>
     </div>
@@ -195,7 +195,7 @@ export default {
   name: 'App',
   data(){
     return{
-      topic : "리틀 프렌즈 사천성",
+      topic : "수 정렬하기",
       content: 'def solution(id_list, report, k):\n\tanswer = []\n\treturn answer\n',
       language: "Python3",
       verticalClick: false,
@@ -304,6 +304,9 @@ export default {
         this.editorStyle.height=(heightPercent-halfGutterPercent)+'%';
         this.resultStyle.height=(100-heightPercent-halfGutterPercent) + '%';
       }
+    },
+    onClickRedirect(){
+      this.$router.go(-1);
     }
   }
 }
