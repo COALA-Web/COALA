@@ -19,6 +19,7 @@ import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCertificate } from "@fortawesome/free-solid-svg-icons";
 
 // cookie
 import VueCookies from "vue-cookies";
@@ -33,7 +34,8 @@ library.add(
   faRotate,
   faGear,
   faCircleQuestion,
-  faCircleCheck
+  faCircleCheck,
+  faCertificate
 );
 // library.add(faCircleUser);
 
