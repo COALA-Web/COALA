@@ -1,9 +1,11 @@
 <template>
   <div>
+    <div style="padding-left: 200px; padding-right: 200px">
+      <navbar-view />
+    </div>
     <div
       class="container"
       style="padding-left: 100px; padding-right: 100px; padding-bottom: -40px">
-      <navbar-view />
     </div>
     <div>
       <div class="example-component">

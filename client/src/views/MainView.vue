@@ -1,9 +1,10 @@
 <template>
   <div class="main">
     <!-- <b-message> </b-message> -->
-
-    <div class="container" style="padding-left: 100px; padding-right: 100px">
+    <div style="padding-left: 200px; padding-right: 200px">
       <navbar-view />
+    </div>
+    <div class="container" style="padding-left: 100px; padding-right: 100px">
       <div>
         <b-notification type="is-warning" aria-close-label="Close notification">
           <font-awesome-icon icon="fa-solid fa-circle-exclamation" />

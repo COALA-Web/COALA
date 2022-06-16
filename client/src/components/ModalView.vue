@@ -170,25 +170,171 @@
 
           <div>
             <b-field class="q">
-              <p>알고리즘별 학습 수준</p>
+              <p>
+                알고리즘별 학습 수준
+                <b-tooltip size="is-large" multilined>
+                  <!-- <b-button label="?" type="is-dark" /> -->
+                  <font-awesome-icon
+                    icon="fa-circle-question"
+                    size="1x"
+                    shake />
+                  <template v-slot:content>
+                    <p class="in-line">1: 아예 모른다/들어본 적은 있다.</p>
+                    <p class="in-line">2: 개념만 알고있다.</p>
+                    <p class="in-line">3: 기본적인 구현이 가능하다.</p>
+                    <p class="in-line">4: 심화 문제 풀이가 가능하다.</p>
+                    <p class="in-line">5: 자유자재로 다룰 수 있다.</p>
+                  </template>
+                </b-tooltip>
+              </p>
             </b-field>
-            <div>
+            <!-- <div>
               <p>0: 아예 모른다/들어본 적은 있다.</p>
               <p>1: 개념만 알고있다.</p>
               <p>2: 구현할 수 있다.</p>
               <p>3: 자유자재로 다룰 수 있다.</p>
-            </div>
+            </div> -->
 
             <div>
-              <p style="float: left">그리디</p>
-              <b-field style="width: 250px">
-                <b-slider size="is-medium" :min="0" :max="5">
-                  <template v-for="val in [0, 1, 2, 3, 4, 5]">
-                    <b-slider-tick :value="val" :key="val">{{
-                      val
-                    }}</b-slider-tick>
-                  </template>
-                </b-slider>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  구현
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  문자열
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  자료구조
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  정렬
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  그래프
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  그리디
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
+              </b-field>
+              <b-field class="a">
+                <p
+                  style="
+                    float: left;
+                    font-size: 1rem;
+                    margin-right: 40px;
+                    padding-top: 15px;
+                  ">
+                  DP
+                </p>
+                <b-field style="width: 250px">
+                  <b-slider size="is-medium" :min="1" :max="5">
+                    <template v-for="val in [1, 2, 3, 4, 5]">
+                      <b-slider-tick :value="val" :key="val">{{
+                        val
+                      }}</b-slider-tick>
+                    </template>
+                  </b-slider>
+                </b-field>
               </b-field>
             </div>
 
@@ -238,14 +384,18 @@
           <b-button
             style="margin-top: 20px"
             label="학습 시작하러 가기"
-            @click="$emit('close')" />
+            @click="
+              $emit('close');
+              levelCheck();
+            " />
         </div>
       </section>
       <footer
         v-if="nextCnt != 2"
         class="modal-card-foot"
         style="padding-left: 500px">
-        <b-button label="임시저장" @click="$emit('close')" />
+        <!-- 삭제 -->
+        <b-button label="이전" @click="$emit('close')" />
         <b-button :label="btnText" type="is-dark" @click="levelCheck()" />
       </footer>
     </div>
@@ -394,5 +544,10 @@ export default {
   left: 0;
   margin-top: 40px;
   /* margin-bottom: 80px; */
+}
+
+.in-line {
+  float: left;
+  padding-right: 10px;
 }
 </style>

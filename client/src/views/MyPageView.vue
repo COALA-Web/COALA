@@ -1,9 +1,11 @@
 <template>
   <div>
+    <div style="padding-left: 200px; padding-right: 200px">
+      <navbar-view />
+    </div>
     <div
       class="container"
       style="padding-left: 200px; padding-right: 200px; padding-top: 40px">
-      <navbar-view />
       <!-- 프로필 상단 -->
       <!-- 프로필 상단 왼쪽 텍스트 영역 -->
       <div style="margin-left: 100px; float: left">
