@@ -130,7 +130,7 @@
             <div class="content" style="float: left">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
               <div v-if="userid == 2019000000" class="p-title">
-                <a href="" style="font-size: 1.5em">
+                <a href="/lecture" style="font-size: 1.5em">
                   <p>{{ todayLecture[0].title }}</p>
                   <!-- <p>{{ todayLecture[0].subtitle }}</p> -->
                 </a>
@@ -247,7 +247,7 @@
             <div class="content" style="float: left">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
               <div v-if="userid == 2019000000" class="p-title">
-                <a href="" style="font-size: 1.5em">
+                <a href="/lecture" style="font-size: 1.5em">
                   <p>{{ reviewLecture[0].title }}</p>
                 </a>
               </div>
