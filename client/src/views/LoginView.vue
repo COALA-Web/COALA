@@ -376,6 +376,7 @@
   width: 100%;
   height: 50px;
   background-color: #333;
+  margin-top: 450px;
 }
 #bottom .d-box {
   width: 1000px;
