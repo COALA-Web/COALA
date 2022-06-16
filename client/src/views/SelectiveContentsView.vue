@@ -457,6 +457,7 @@
             v-on:mouseover="mouse_over = true"
             v-on:mouseleave="mouse_over = false">
             <div>
+              <p><b>객체지향 프로그래밍</b></p>
               <img src="@/assets/lecture1.png" />
               <p v-show="mouse_over">
                 <b
@@ -480,10 +481,8 @@
                     <img src="@/assets/lecture3.png" />
                     <p v-show="mouse_over2" > <b>사용자와 유사한 이용자의 68%가 약 81% 수강률로 해당 영상을 시청했습니다.</b></p>
                 </div>
-
-          
             </div>
-          </div>
+          
         </div>
       </div>
       <div style="height: 70px"></div>
@@ -580,7 +579,6 @@
 <script>
 import NavbarView from "../components/navbarView.vue";
 import RadarChart from "../components/RadarChartView.vue";
-
 export default {
   name: "SelectiveContentsView",
   data() {
@@ -604,7 +602,6 @@ export default {
       active_bfs: false,
       active_hash: false,
       active_others: false,
-
       onArray: false,
       onString: false,
       onGreedy: false,
@@ -614,7 +611,6 @@ export default {
       onDfs: false,
       onBfs: false,
       onHash: false,
-
       chartData: {
         labels: [
           "1",
@@ -631,7 +627,6 @@ export default {
           {
             label: "사용자 분포",
             backgroundColor: "#f87979",
-
             data: [4, 15, 21, 32, 30, 11, 5, 3, 1]
           }
         ]
