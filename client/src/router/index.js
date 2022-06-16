@@ -9,6 +9,7 @@ import ProblemView2 from "../components/problemSolvingView2.vue";
 import SelectView from "../views/SelectiveContentsView.vue";
 import SelectView2 from "../views/SelectiveProblemsView.vue";
 import LectureView from "../views/LectureView.vue";
+import QuestionView from "../views/QuestionView.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -85,6 +86,11 @@ const routes = [
     name: "lecture",
     component: LectureView
   },
+  {
+    path: "/question",
+    name: "question",
+    component: QuestionView
+  }
 ];
 
 const router = new VueRouter({
