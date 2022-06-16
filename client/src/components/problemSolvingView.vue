@@ -62,7 +62,7 @@
         </b-dropdown>
         </div>
         <div class="column" style="padding-top:20px">
-          <b-button type="is-danger" >Exit</b-button>
+          <b-button type="is-danger" @click="onClickRedirect()">Exit</b-button>
         </div>
       </div>
     </div>
@@ -304,6 +304,9 @@ export default {
         this.editorStyle.height=(heightPercent-halfGutterPercent)+'%';
         this.resultStyle.height=(100-heightPercent-halfGutterPercent) + '%';
       }
+    },
+    onClickRedirect(){
+      this.$router.go(-1);
     }
   }
 }

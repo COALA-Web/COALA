@@ -356,6 +356,7 @@
               ">
               <p><b>실력 지표 한눈에 보기</b></p>
 
+
               <template v-if="onString == true">
                 <img src="@/assets/s1.png" style="width: 800; height: 350px" />
                 <p>
@@ -427,6 +428,7 @@
         </div>
       </div>
 
+
       <div style="height: 30px"></div>
       <div style="background-color: #f0f0f0">
         <p
@@ -463,33 +465,23 @@
                 >
               </p>
             </div>
-          </div>
-          <div
-            class="column is-third"
-            v-on:mouseover="mouse_over1 = true"
-            v-on:mouseleave="mouse_over1 = false">
-            <div>
-              <img src="@/assets/lecture2.png" />
-              <p v-show="mouse_over1">
-                <b
-                  >사용자와 유사한 이용자의 75%가 약 84% 수강률로 해당 영상을
-                  시청했습니다.</b
-                >
-              </p>
             </div>
-          </div>
-          <div
-            class="column is-third"
-            v-on:mouseover="mouse_over2 = true"
-            v-on:mouseleave="mouse_over2 = false">
-            <div>
-              <img src="@/assets/lecture3.png" />
-              <p v-show="mouse_over2">
-                <b
-                  >사용자와 유사한 이용자의 68%가 약 81% 수강률로 해당 영상을
-                  시청했습니다.</b
-                >
-              </p>
+
+            <div class="column is-third"  v-on:mouseover="mouse_over1=true" v-on:mouseleave="mouse_over1=false" >
+                <div>
+                    <p><b>자료구조와 알고리즘 </b></p>
+                    <img src="@/assets/lecture2.png" />
+                    <p v-show="mouse_over1"> <b>사용자와 유사한 이용자의 75%가 약 84% 수강률로 해당 영상을 시청했습니다.</b></p>
+                </div>
+            </div>
+            <div class="column is-third" v-on:mouseover="mouse_over2=true" v-on:mouseleave="mouse_over2=false">
+                <div>
+                    <p><b>알고리즘과 데이터 </b></p>
+                    <img src="@/assets/lecture3.png" />
+                    <p v-show="mouse_over2" > <b>사용자와 유사한 이용자의 68%가 약 81% 수강률로 해당 영상을 시청했습니다.</b></p>
+                </div>
+
+          
             </div>
           </div>
         </div>
@@ -523,47 +515,62 @@
         </div>
 
         <div class="columns">
-          <div class="column is-one-quarter">
-            <img src="@/assets/1.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/2.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/3.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/4.png" />
-          </div>
+
+            <div class="column is-one-quarter" >
+                <p><b>KMP 알고리즘</b></p>
+                <img src="@/assets/1.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>코딩 테스트 첫 걸음</b></p>
+                <img src="@/assets/2.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>자료구조 알고리즘 </b></p>
+                <img src="@/assets/3.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>그리디 알고리즘 </b></p>
+                <img src="@/assets/4.png" />
+            </div>
+
         </div>
 
         <div class="columns">
-          <div class="column is-one-quarter">
-            <img src="@/assets/5.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/6.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/7.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/8.png" />
-          </div>
+            <div class="column is-one-quarter" >
+                <p><b>깊이 우선 탐색</b></p>
+                <img src="@/assets/5.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>정렬 알고리즘 </b></p>
+                <img src="@/assets/6.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>C 언어 </b></p>
+                <img src="@/assets/7.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>파이썬</b></p>
+                <img src="@/assets/8.png" />
+            </div>
         </div>
         <div class="columns">
-          <div class="column is-one-quarter">
-            <img src="@/assets/9.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/10.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/11.png" />
-          </div>
-          <div class="column is-one-quarter">
-            <img src="@/assets/12.png" />
-          </div>
+            <div class="column is-one-quarter" >
+                <p><b>최단 경로 알고리즘</b></p>
+                <img src="@/assets/9.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>그리디 알고리즘 </b></p>
+                <img src="@/assets/10.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>그리디 알고리즘2 </b></p>
+                <img src="@/assets/11.png" />
+            </div>
+            <div class="column is-one-quarter" >
+                <p><b>정렬 알고리즘2 </b></p>
+                <img src="@/assets/12.png" />
+            </div>
+
         </div>
       </div>
     </section>
