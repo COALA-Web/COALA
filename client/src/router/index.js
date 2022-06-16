@@ -10,6 +10,9 @@ import SelectView from "../views/SelectiveContentsView.vue";
 import SelectView2 from "../views/SelectiveProblemsView.vue";
 import LectureView from "../views/LectureView.vue";
 import QuestionView from "../views/QuestionView.vue";
+import RankingView from "../views/RankingView.vue";
+import ContestView from "../views/ContestView.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -90,6 +93,16 @@ const routes = [
     path: "/question",
     name: "question",
     component: QuestionView
+  },
+  {
+    path: "/ranking",
+    name: "ranking",
+    component: RankingView
+  },
+  {
+    path: "/contest",
+    name: "contest",
+    component: ContestView
   }
 ];
 

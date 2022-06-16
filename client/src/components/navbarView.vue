@@ -19,8 +19,12 @@
       <b-navbar-item class="margin-horizontal" href="/question">
         게시판
       </b-navbar-item>
-      <b-navbar-item class="margin-horizontal" href="#"> 대회 </b-navbar-item>
-      <b-navbar-item class="margin-horizontal" href="#"> 랭킹 </b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="/contest">
+        대회
+      </b-navbar-item>
+      <b-navbar-item class="margin-horizontal" href="/ranking">
+        랭킹
+      </b-navbar-item>
     </template>
 
     <template #end>
