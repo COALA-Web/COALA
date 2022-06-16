@@ -1,9 +1,11 @@
 <template>
   <div>
+    <div style="padding-left: 200px; padding-right: 200px">
+      <navbar-view />
+    </div>
     <div
       class="container"
       style="padding-left: 200px; padding-right: 200px; padding-top: 40px">
-      <navbar-view />
       <!-- 프로필 상단 -->
       <!-- 프로필 상단 왼쪽 텍스트 영역 -->
       <div style="margin-left: 100px; float: left">
@@ -16,11 +18,22 @@
         <p style="height: 40px">
           <span class="profile-rank"
             >랭크
-            <font-awesome-icon icon="fa-medal" size="1x" />
+            <font-awesome-icon
+              icon="fa-medal"
+              size="1x"
+              :style="{ color: 'gold' }" />
           </span>
           <span style="margin-left: 80px" class="profile-rank"
-            >획득 배지 (추가예정)</span
-          >
+            >획득 배지
+            <font-awesome-icon
+              icon="fa-certificate"
+              size="1x"
+              :style="{ color: 'blue' }" />
+            <font-awesome-icon
+              icon="fa-certificate"
+              size="1x"
+              :style="{ color: 'orange' }" />
+          </span>
         </p>
         <p style="height: 40px">
           <span class="profile-rank">123 문제 해결</span>

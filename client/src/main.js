@@ -17,11 +17,14 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCertificate } from "@fortawesome/free-solid-svg-icons";
 
 // cookie
-import VueCookies from "vue-cookies"
+import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
-Vue.$cookies.config("1d") // expire 1일 (global 설정)
+Vue.$cookies.config("1d"); // expire 1일 (global 설정)
 
 library.add(
   faBell,
@@ -29,7 +32,10 @@ library.add(
   faCircleExclamation,
   faMedal,
   faRotate,
-  faGear
+  faGear,
+  faCircleQuestion,
+  faCircleCheck,
+  faCertificate
 );
 // library.add(faCircleUser);
 

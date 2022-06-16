@@ -1,9 +1,10 @@
 <template>
   <div class="main">
     <!-- <b-message> </b-message> -->
-
-    <div class="container" style="padding-left: 100px; padding-right: 100px">
+    <div style="padding-left: 200px; padding-right: 200px">
       <navbar-view />
+    </div>
+    <div class="container" style="padding-left: 100px; padding-right: 100px">
       <div>
         <b-notification type="is-warning" aria-close-label="Close notification">
           <font-awesome-icon icon="fa-solid fa-circle-exclamation" />
@@ -30,9 +31,9 @@
               padding-left: 10px;
               padding-bottom: 10px;
             ">
-            학습 진행률
+            오늘 학습 진행률
           </p>
-          <b-progress :value="60" show-value format="percent"></b-progress>
+          <b-progress :value="50" show-value format="percent"></b-progress>
         </div>
       </div>
 
@@ -55,21 +56,32 @@
         </b-tooltip>
       </h1>
       <div class="tile is-ancestor">
+        <!-- 오늘의 문제 -->
         <div class="tile is-parent is-6">
           <article class="tile is-child box notification is-dark">
-            <p class="subtitle tile-title">오늘의 문제</p>
+            <p class="subtitle tile-title">
+              <!-- 오늘의 문제 -->
+              <span>오늘의 문제</span>
+              <span
+                ><font-awesome-icon
+                  icon="fa-solid fa-circle-check"
+                  size="1.2x"
+                  style="color: #4bdb4b; padding-left: 295px" />&nbsp;&nbsp;학습
+                완료</span
+              >
+            </p>
 
             <!-- 오늘의 문제 컨텐츠 -->
-            <div class="content">
+            <div class="content" style="float: left">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
-              <div v-if="userid == 2019000000">
+              <div v-if="userid == 2019000000" class="p-title">
                 <a href="/ps" style="font-size: 1.5em">
-                  {{ problem.number }}
+                  [{{ problem.number }}]
                   {{ problem.title }}
                   <!-- {{ todayProblems[2].title }} -->
                 </a>
               </div>
-              <div v-else>
+              <div v-else class="p-title">
                 <a href="/ps2" style="font-size: 1.5em">
                   {{ problem.number }}
                   {{ problem.title }}
@@ -81,29 +93,72 @@
                 {{problem.title}}
                  {{ todayProblems[2].title }}
               </a> -->
-              <p>문제 유형: {{ problem.tag }}</p>
-              <p>문제 난이도: {{ problem.difficulty }}</p>
-              <p>풀이 소요 예상 시간: {{ problem.expect_time }}분</p>
-              <p>유사한 레벨의 사용자 {{ problem.ans_rate }}%가 푼 문제</p>
+              <p
+                style="
+                  text-align: left;
+                  padding-left: 10px;
+                  padding-bottom: 5px;
+                ">
+                문제 유형:
+                <b-tag type="is-primary" rounded>{{ problem.tag }}</b-tag>
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                문제 난이도: {{ problem.difficulty }}
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                <span> 풀이 소요 예상 시간: {{ problem.expect_time }}분 </span>
+                <span style="text-align: right; padding-left: 80px"
+                  >유사한 레벨의 사용자 {{ problem.ans_rate }}%가 푼 문제</span
+                >
+              </p>
             </div>
           </article>
         </div>
+        <!-- 오늘의 강의 -->
         <div class="tile is-parent is-6">
           <article class="tile is-child box notification is-dark">
-            <p class="subtitle tile-title">오늘의 강의</p>
-
-            <div class="content">
-              <a href="" style="font-size: 1.5em">
-                <div v-if="userid == 2019000000">
+            <p class="subtitle tile-title">
+              <span>오늘의 강의</span>
+              <span
+                ><font-awesome-icon
+                  icon="fa-solid fa-circle-check"
+                  size="1.2x"
+                  style="color: #4bdb4b; padding-left: 295px" />&nbsp;&nbsp;학습
+                완료</span
+              >
+            </p>
+            <div class="content" style="float: left">
+              <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
+              <div v-if="userid == 2019000000" class="p-title">
+                <a href="/lecture" style="font-size: 1.5em">
                   <p>{{ todayLecture[0].title }}</p>
-                  <p>{{ todayLecture[0].subtitle }}</p>
-                </div>
-                <div v-else>
+                  <!-- <p>{{ todayLecture[0].subtitle }}</p> -->
+                </a>
+              </div>
+              <div v-else class="p-title">
+                <a href="" style="font-size: 1.5em">
                   <p>{{ todayLecture[1].title }}</p>
                   <p>{{ todayLecture[1].subtitle }}</p>
-                </div>
-              </a>
-              <p>여긴 무슨 정보가 들어가야될까?</p>
+                </a>
+              </div>
+              <p
+                style="
+                  text-align: left;
+                  padding-left: 10px;
+                  padding-bottom: 5px;
+                ">
+                관련 개념:
+                <b-tag type="is-primary" rounded>{{ problem.tag }}</b-tag>
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                강의 난이도: {{ problem.difficulty }}
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                <span> 강의시간: 34분 </span>
+                <span style="text-align: right; padding-left: 150px"
+                  >유사한 레벨의 사용자 {{ problem.ans_rate }}%가 가 시청</span
+                >
+              </p>
             </div>
           </article>
         </div>
@@ -129,33 +184,97 @@
         </b-tooltip>
       </h1>
       <div class="tile is-ancestor">
+        <!-- 복습 문제 -->
         <div class="tile is-parent is-6">
-          <!-- <div class="tile"> -->
           <article class="tile is-child box notification is-dark">
-            <p class="subtitle tile-title">복습 문제</p>
-            <div class="content">
+            <p class="subtitle tile-title">
+              <!-- 오늘의 문제 -->
+              <span>복습 문제</span>
+              <span v-if="false"
+                ><font-awesome-icon
+                  icon="fa-solid fa-circle-check"
+                  size="1.2x"
+                  style="color: #4bdb4b; padding-left: 295px" />&nbsp;&nbsp;학습
+                완료</span
+              >
+            </p>
+
+            <!-- 오늘의 문제 컨텐츠 -->
+            <div class="content" style="float: left">
               <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
-              <a href="" style="font-size: 1.5em">
-                {{ review.number }}
-                {{ review.title }}
-                <!-- {{ todayProblems[2].title }} -->
-              </a>
-              <p>문제 유형: {{ review.tag }}</p>
-              <p>문제 난이도: {{ review.difficulty }}</p>
-              <p>풀이 소요 예상 시간: {{ review.expect_time }}분</p>
-              <p>유사한 레벨의 사용자 {{ review.ans_rate }}%가 푼 문제</p>
+              <div class="p-title">
+                <a href="" style="font-size: 1.5em">
+                  {{ review.number }}
+                  {{ review.title }}
+                </a>
+              </div>
+              <p
+                style="
+                  text-align: left;
+                  padding-left: 10px;
+                  padding-bottom: 5px;
+                ">
+                문제 유형:
+                <b-tag type="is-primary" rounded>{{ review.tag }}</b-tag>
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                문제 난이도: {{ review.difficulty }}
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                <span> 풀이 소요 예상 시간: {{ review.expect_time }}분 </span>
+                <span style="text-align: right; padding-left: 80px"
+                  >유사한 레벨의 사용자 {{ review.ans_rate }}%가 푼 문제</span
+                >
+              </p>
             </div>
           </article>
         </div>
+
+        <!-- 복습 강의 -->
+
         <div class="tile is-parent is-6">
           <article class="tile is-child box notification is-dark">
-            <p class="subtitle tile-title">복습 강의</p>
-            <div class="content">
-              <a href="" style="font-size: 1.5em">
-                <p>{{ reviewLecture[0].title }}</p>
-                <p>{{ reviewLecture[0].subtitle }}</p>
-              </a>
-              <p>여긴 무슨 정보가 들어가야될까?</p>
+            <p class="subtitle tile-title">
+              <span>복습 강의</span>
+              <span v-if="false"
+                ><font-awesome-icon
+                  icon="fa-solid fa-circle-check"
+                  size="1.2x"
+                  style="color: #4bdb4b; padding-left: 295px" />&nbsp;&nbsp;학습
+                완료</span
+              >
+            </p>
+            <div class="content" style="float: left">
+              <!-- 인덱스를 새로고침 할 때마다 다르게 뿌려주기.  float: left? -->
+              <div v-if="userid == 2019000000" class="p-title">
+                <a href="/lecture" style="font-size: 1.5em">
+                  <p>{{ reviewLecture[0].title }}</p>
+                </a>
+              </div>
+              <div v-else class="p-title">
+                <a href="" style="font-size: 1.5em">
+                  <p>{{ reviewLecture[0].title }}</p>
+                  <p>{{ reviewLecture[0].subtitle }}</p>
+                </a>
+              </div>
+              <p
+                style="
+                  text-align: left;
+                  padding-left: 10px;
+                  padding-bottom: 5px;
+                ">
+                관련 개념:
+                <b-tag type="is-primary" rounded>{{ review.tag }}</b-tag>
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                강의 난이도: {{ review.difficulty }}
+              </p>
+              <p style="text-align: left; padding-left: 10px">
+                <span> 강의시간: 22분 </span>
+                <span style="text-align: right; padding-left: 150px"
+                  >유사한 레벨의 사용자 71%가 가 시청</span
+                >
+              </p>
             </div>
           </article>
         </div>
@@ -210,7 +329,8 @@ export default {
         }
       ],
       reviewLecture: [
-        { title: "DFS 기초1", subtitle: "", key: "Dfs_1", class: ["BFS"] }
+        { title: "DFS 기초1", subtitle: "", key: "Dfs_1", class: ["BFS"] },
+        { title: "정렬 기초1", subtitle: "", key: "sort_1", class: ["정렬"] }
       ]
     };
   },
@@ -307,5 +427,10 @@ export default {
 <style scoped>
 .tile-title {
   text-align: left;
+}
+
+.p-title {
+  padding-left: 0px;
+  padding-bottom: 40px;
 }
 </style>
