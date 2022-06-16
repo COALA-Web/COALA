@@ -376,6 +376,7 @@
   width: 100%;
   height: 50px;
   background-color: #333;
+  margin-top: 450px;
 }
 #bottom .d-box {
   width: 1000px;
@@ -438,11 +439,11 @@ export default {
 
       axios.post("/api/login", args).then((res) => {
         if (res.data.success == true) {
-          alert(res.data.message);
+          // alert(res.data.message);
           this.$router.push({ path: "/levelcheck" });
           // this.$router.push({ path: "/start" });
         } else {
-          alert(res.data.message);
+          // alert(res.data.message);
         }
       });
     }

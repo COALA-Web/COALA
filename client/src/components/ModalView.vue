@@ -493,16 +493,16 @@ export default {
         .post("/api/levelCheck", args)
         .then((res) => {
           if (res.data.success == true) {
-            alert(res.data.message);
+            // alert(res.data.message);
             this.$router.push("/main");
           }
           if (res.data.success == false) {
-            alert(res.data.message);
+            // alert(res.data.message);
           }
         })
 
         .catch((err) => {
-          alert(err);
+          // alert(err);
         });
     }
   }

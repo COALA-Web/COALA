@@ -6,12 +6,10 @@
     <div
       class="container"
       style="padding-left: 100px; padding-right: 100px; padding-top: 50px">
-      <a href="contest2">
-        <b-image
-          :src="require('@/assets/contest_img.png')"
-          alt="Contest image"
-          :rounded="rounded"></b-image>
-      </a>
+      <b-image
+        :src="require('@/assets/contest2_img.png')"
+        alt="Contest image"
+        :rounded="rounded"></b-image>
     </div>
   </div>
 </template>

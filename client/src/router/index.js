@@ -12,6 +12,7 @@ import LectureView from "../views/LectureView.vue";
 import QuestionView from "../views/QuestionView.vue";
 import RankingView from "../views/RankingView.vue";
 import ContestView from "../views/ContestView.vue";
+import Contest2View from "../views/Contest2View.vue";
 
 Vue.use(VueRouter);
 
@@ -103,6 +104,11 @@ const routes = [
     path: "/contest",
     name: "contest",
     component: ContestView
+  },
+  {
+    path: "/contest2",
+    name: "contest2",
+    component: Contest2View
   }
 ];
 
