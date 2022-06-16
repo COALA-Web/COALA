@@ -5,7 +5,7 @@
       class="container"
       style="padding-top: 30px; padding-left: 100px; padding-right: 100px">
       <div style="font-size: 3rem; font-weight: bold">
-        <p>안녕하세요!👋🙌</p>
+        <p>안녕하세요!👋</p>
         <p>코알라 님.</p>
       </div>
       <hr class="horizon-line" />

@@ -18,11 +18,22 @@
         <p style="height: 40px">
           <span class="profile-rank"
             >랭크
-            <font-awesome-icon icon="fa-medal" size="1x" />
+            <font-awesome-icon
+              icon="fa-medal"
+              size="1x"
+              :style="{ color: 'gold' }" />
           </span>
           <span style="margin-left: 80px" class="profile-rank"
-            >획득 배지 (추가예정)</span
-          >
+            >획득 배지
+            <font-awesome-icon
+              icon="fa-certificate"
+              size="1x"
+              :style="{ color: 'blue' }" />
+            <font-awesome-icon
+              icon="fa-certificate"
+              size="1x"
+              :style="{ color: 'orange' }" />
+          </span>
         </p>
         <p style="height: 40px">
           <span class="profile-rank">123 문제 해결</span>
